@@ -1,7 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Lift
 {
@@ -19,8 +21,8 @@ public class Lift
 
 
     //init
-    public void init() {
-      //hardware.get
+    public void init(HardwareMap hwmap) {
+    liftMOTOR = hwmap.get(DcMotor.class,"liftmotor");
     liftMOTOR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     liftMOTOR.setDirection(DcMotorSimple.Direction.FORWARD);
     liftMOTOR.setPower(LIFTSPEED);

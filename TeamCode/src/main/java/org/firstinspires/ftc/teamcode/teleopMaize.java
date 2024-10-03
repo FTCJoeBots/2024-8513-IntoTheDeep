@@ -18,14 +18,19 @@ public class teleopMaize extends OpMode {
     boolean a_state = false;
     boolean a_prev = false;
     public final double MAXSPEED = .3;
-    HardwareMap hwmap  = null;
-    MecanumDrive d = new SampleMecanumDrive(hwmap);
+    TeleOpMecanum d = new TeleOpMecanum();
     Intake8513 i = new Intake8513();
     Lift l = new Lift();
+    horizantalSlide h = new horizantalSlide();
+
 
 
     public void init(){
-        //d.init(hwmap);
+        d.init(hardwareMap);
+        i.init(hardwareMap);
+        l.init(hardwareMap);
+        h.init(hardwareMap);
+
     }
 
     @Override
@@ -33,8 +38,20 @@ public class teleopMaize extends OpMode {
         forward=gamepad1.left_stick_y*-MAXSPEED;
         rotate = gamepad1.right_stick_x*MAXSPEED;
         strafe = gamepad1.left_trigger*MAXSPEED-gamepad1.right_trigger*MAXSPEED;
-        //fix...put the object in this directory
-        //d.driveMecanum(forward,strafe,rotate);
+        d.driveMecanum(forward,strafe,rotate);
+
+
+        //STOP THE INTAKE IF OUR COLOR SENSOR HAS SOMETHING
+        //   In this case, sample_color will return 1,2, or 3 if it has a color
+        //   Otherwise, it will return -1
+        //   If we get something bigger than 0, we have a color
+        if (i.sample_color>0) {
+            i.stopintake();
+            //If it's yellow or the color we're looking for, we're good
+
+            //If it's one we don't want, we need to yeet this backwards
+        }
+
 
 
         if (gamepad2.a && !a_prev) {

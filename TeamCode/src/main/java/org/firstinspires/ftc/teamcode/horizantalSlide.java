@@ -1,7 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class horizantalSlide {
      public static final int MINMIUMSLIDEPOSITION = 20;
@@ -11,13 +13,13 @@ public class horizantalSlide {
 
 
     DcMotor slideMotor = null;
-     public void init () {
-         //hwgit
+     public void init (HardwareMap hwmap) {
+         slideMotor = hwmap.get(DcMotor.class,"slidemotor");
          slideMotor.setDirection(DcMotorSimple.Direction.FORWARD);
          slideMotor.setPower(0);
          slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
          slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-         //slideMotor.setMode(DcMotor.ZeroPowerBehavior.FLOAT);
+         slideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
          slideMotor.setTargetPosition(MINMIUMSLIDEPOSITION);
          slideMotor.setPower(HORIZONTIALSLIDESPEED);
 

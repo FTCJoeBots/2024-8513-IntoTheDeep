@@ -14,8 +14,9 @@ public class Intake8513 {
     NormalizedColorSensor colorSensor;
 
     void init (HardwareMap hwmap){
-        //hardwaremap
-        //colorSensor = hardwareMap.get(NormalizedColorSensor.class, "ColorSensor");
+       colorSensor = hwmap.get(NormalizedColorSensor.class, "ColorSensor");
+       leftIntakeServo = hwmap.get(CRServo.class,"leftintake");
+       leftIntakeServo = hwmap.get(CRServo.class,"rightintake");
        stopintake();
     }
 
@@ -39,7 +40,6 @@ public class Intake8513 {
     void reverseintake (){
         leftIntakeServo.setPower(-INTAKESPEED);
         rightIntakeServo.setPower(INTAKESPEED);
-        ///reverseintake
 
     }
 
