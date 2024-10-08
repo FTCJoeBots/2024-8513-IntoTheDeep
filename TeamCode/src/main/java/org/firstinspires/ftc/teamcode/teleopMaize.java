@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 
 
@@ -12,7 +13,7 @@ import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 
 
 public class teleopMaize extends OpMode {
-
+    boolean WHICHTEAM=false;   //0 is red,1 is blue
     double forward=0;
     double strafe=0;
     double rotate=0;
@@ -21,8 +22,7 @@ public class teleopMaize extends OpMode {
     boolean b_state=false;
     boolean b_prev = false;
     public final double MAXSPEED = .3;
-    HardwareMap hwmap  = null;
-    MecanumDrive d = new SampleMecanumDrive(hwmap);
+    TeleOpMecanum d = new TeleOpMecanum();
     Intake8513 i = new Intake8513();
     Lift l = new Lift();
     horizantalSlide h= new horizantalSlide();
@@ -111,6 +111,18 @@ public class teleopMaize extends OpMode {
         if(gamepad2.dpad_left) {
             h.horizontalSlideManualIn();
         }
+
+        telemetry.addData("Lift position:",l.liftMOTOR.getCurrentPosition());
+        telemetry.addData("Slide position:",h.slideMotor.getCurrentPosition());
+
+        telemetry.update();
     }
+
+
+
+
+
+
+
 }
 

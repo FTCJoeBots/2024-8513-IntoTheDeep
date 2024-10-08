@@ -43,7 +43,7 @@ public class Intake8513 {
 
     }
 
-private int getSampleColor (){
+public int getSampleColor (){
     NormalizedRGBA colors = colorSensor.getNormalizedColors();
     if (hsvValues[0]<20) {
         return 1;
