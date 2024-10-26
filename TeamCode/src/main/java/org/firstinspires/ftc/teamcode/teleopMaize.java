@@ -32,10 +32,11 @@ public class teleopMaize extends OpMode {
 
     public void init(){
         d.init(hardwareMap);
-        i.init(hardwareMap);
+        //i.init(hardwareMap);
         l.init(hardwareMap);
         h.init(hardwareMap);
-
+telemetry.addLine("initcomplete");
+telemetry.update();
     }
 
     @Override
@@ -45,6 +46,8 @@ public class teleopMaize extends OpMode {
         //3 -blue
         //WHICHTEAM=false = red  true=blue
         //*****Refactor this to an enumerated variable for readability
+
+        /*
         if(i.getSampleColor()>0){
             i.stopintake();
             //get rid of it if we have a red and we're the blue team
@@ -56,7 +59,7 @@ public class teleopMaize extends OpMode {
                 i.startintake();
             }
         }
-
+*/
 
 
 
@@ -65,7 +68,7 @@ public class teleopMaize extends OpMode {
         rotate = gamepad1.right_stick_x*MAXSPEED;
         strafe = gamepad1.left_trigger*MAXSPEED-gamepad1.right_trigger*MAXSPEED;
         //fix...put the object in this directory
-        //d.driveMecanum(forward,strafe,rotate);
+        d.driveMecanum(forward,strafe,rotate);
 
 
         if (gamepad2.a && !a_prev) {
@@ -112,7 +115,7 @@ public class teleopMaize extends OpMode {
             h.horizontalSlideManualIn();
         }
 
-        telemetry.addData("Lift position:",l.liftMOTOR.getCurrentPosition());
+        telemetry.addData("Lift position:",l.rightLiftMotor.getCurrentPosition());
         telemetry.addData("Slide position:",h.slideMotor.getCurrentPosition());
 
         telemetry.update();

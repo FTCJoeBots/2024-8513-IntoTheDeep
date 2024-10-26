@@ -14,31 +14,38 @@ public class Lift
     public static final int LIFTMANUALINC=30;
 
     //variables
-    DcMotor liftMOTOR=null;
+    DcMotor rightLiftMotor=null;
 
-
+    DcMotor leftLiftMotor=null;
     ///methods
 
 
     //init
     public void init(HardwareMap hwmap) {
-    liftMOTOR = hwmap.get(DcMotor.class,"liftmotor");
-    liftMOTOR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-    liftMOTOR.setDirection(DcMotorSimple.Direction.FORWARD);
-    liftMOTOR.setPower(LIFTSPEED);
-    liftMOTOR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-    liftautodown();
+    rightLiftMotor = hwmap.get(DcMotor.class,"rightLiftMotor");
+        leftLiftMotor = hwmap.get(DcMotor.class,"leftLiftMotor");
+    rightLiftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+      leftLiftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    rightLiftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+    leftLiftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+    rightLiftMotor.setPower(0);
+        leftLiftMotor.setPower(0);
+    rightLiftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        leftLiftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //liftautodown();
     }
 
     //manual up
     public void liftmanualup(){
         int liftCurPosition=0;
         int liftNewPosition=0;
-        liftCurPosition=liftMOTOR.getCurrentPosition();
+        liftCurPosition=rightLiftMotor.getCurrentPosition();
         liftNewPosition = liftCurPosition+LIFTMANUALINC;
         if(liftNewPosition<LIFTHIGHPOINT) {
-            liftMOTOR.setTargetPosition(liftNewPosition);
-            liftMOTOR.setPower(LIFTSPEED);
+            rightLiftMotor.setTargetPosition(liftNewPosition);
+            leftLiftMotor.setTargetPosition(liftNewPosition);
+            rightLiftMotor.setPower(LIFTSPEED);
+            leftLiftMotor.setPower(LIFTSPEED);
         }
 
     }
@@ -46,27 +53,33 @@ public class Lift
     public void liftmanualdown(){
         int liftCurPosition=0;
         int liftNewPosition=0;
-        liftCurPosition=liftMOTOR.getCurrentPosition();
+        liftCurPosition=rightLiftMotor.getCurrentPosition();
         liftNewPosition = liftCurPosition-LIFTMANUALINC;
         if(liftNewPosition>LIFTLOWPOINT) {
-            liftMOTOR.setTargetPosition(liftNewPosition);
-            liftMOTOR.setPower(LIFTSPEED);
+            rightLiftMotor.setTargetPosition(liftNewPosition);
+            leftLiftMotor.setTargetPosition(liftNewPosition);
+            rightLiftMotor.setPower(LIFTSPEED);
+            leftLiftMotor.setPower(LIFTSPEED);
         }
 
     }
     //auto down
     public void liftautodown(){
 
-        liftMOTOR.setTargetPosition(LIFTLOWPOINT);
-        liftMOTOR.setPower(LIFTSPEED);
+        rightLiftMotor.setTargetPosition(LIFTLOWPOINT);
+        leftLiftMotor.setTargetPosition(LIFTLOWPOINT);
+        rightLiftMotor.setPower(LIFTSPEED);
+        leftLiftMotor.setPower(LIFTSPEED);
 
     }
     //auto up
 
     public void liftautoup(){
 
-        liftMOTOR.setTargetPosition(LIFTHIGHPOINT);
-        liftMOTOR.setPower(LIFTSPEED);
+        rightLiftMotor.setTargetPosition(LIFTHIGHPOINT);
+        leftLiftMotor.setTargetPosition(LIFTHIGHPOINT);
+        rightLiftMotor.setPower(LIFTSPEED);
+        leftLiftMotor.setPower(LIFTSPEED);
 
     }
 
