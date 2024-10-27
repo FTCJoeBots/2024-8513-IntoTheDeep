@@ -15,7 +15,7 @@ public class clawMaize
 
     //init
     public void init (HardwareMap hwmap) {
-        //get the servo from the controlhub
+        clawServo=hwmap.get(Servo.class,"ClawServo");
     }
     //methods
     public void openClaw () {

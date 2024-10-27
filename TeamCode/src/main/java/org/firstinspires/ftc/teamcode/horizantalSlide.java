@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class horizantalSlide {
-     public static final int MINMIUMSLIDEPOSITION = 20;
-     public static final int MAXIMUMSLIDEPOSITION = 111;
+     public static final int MINMIUMSLIDEPOSITION = 10;
+     public static final int MAXIMUMSLIDEPOSITION = 2900;
      public static final double HORIZONTIALSLIDESPEED = .2;
      public static final int MANUALSLIDEINCREMENT = 10;
 
@@ -33,6 +33,7 @@ public class horizantalSlide {
          if (currentSlidePosition+MANUALSLIDEINCREMENT < MAXIMUMSLIDEPOSITION) {
          newSlidePosition = currentSlidePosition+MANUALSLIDEINCREMENT;
          slideMotor.setTargetPosition(newSlidePosition);
+         slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
          slideMotor.setPower(HORIZONTIALSLIDESPEED);
          }
     }
@@ -42,9 +43,10 @@ public class horizantalSlide {
         int currentSlidePosition = 0;
         int newSlidePosition = 0;
         currentSlidePosition = slideMotor.getCurrentPosition();
-        if (currentSlidePosition-MANUALSLIDEINCREMENT < MINMIUMSLIDEPOSITION) {
+        if (currentSlidePosition-MANUALSLIDEINCREMENT > MINMIUMSLIDEPOSITION) {
             newSlidePosition = currentSlidePosition-MANUALSLIDEINCREMENT;
             slideMotor.setTargetPosition(newSlidePosition);
+            slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             slideMotor.setPower(HORIZONTIALSLIDESPEED);
         }
     }

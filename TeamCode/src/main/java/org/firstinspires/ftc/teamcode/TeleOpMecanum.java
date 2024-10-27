@@ -8,9 +8,9 @@ import org.firstinspires.ftc.robotcore.external.matrices.GeneralMatrixF;
 import org.firstinspires.ftc.robotcore.external.matrices.MatrixF;
 
 public class    TeleOpMecanum {
-    private DcMotor motor0;
-    private DcMotor motor1;
-    private DcMotor motor2;
+    public DcMotor motor0;
+    public DcMotor motor1;
+    public DcMotor motor2;
     private DcMotor motor3;
 
     public static double GEAR_RATIO = 1.0; // for simulator - ours should be 0.5f;

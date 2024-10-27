@@ -1,4 +1,6 @@
 package org.firstinspires.ftc.teamcode;
+import android.graphics.Color;
+
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.NormalizedRGBA;
 import com.qualcomm.robotcore.hardware.CRServo;
@@ -6,7 +8,7 @@ import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
 public class Intake8513 {
 
 
-    public static final double INTAKESPEED = .2;
+    public static final double INTAKESPEED = .5;
     int sample_color=-1;
     final float[] hsvValues = new float[3];
     CRServo leftIntakeServo = null;
@@ -16,7 +18,7 @@ public class Intake8513 {
     void init (HardwareMap hwmap){
        colorSensor = hwmap.get(NormalizedColorSensor.class, "ColorSensor");
        leftIntakeServo = hwmap.get(CRServo.class,"leftintake");
-       leftIntakeServo = hwmap.get(CRServo.class,"rightintake");
+       rightIntakeServo = hwmap.get(CRServo.class,"rightintake");
        stopintake();
     }
 
@@ -31,9 +33,6 @@ public class Intake8513 {
     void startintake (){
         leftIntakeServo.setPower(INTAKESPEED);
         rightIntakeServo.setPower(-INTAKESPEED);
-        sample_color=getSampleColor();
-        //if sample is red/blue or yellow, stop
-        //otherwise spit it out
 
     }
 
@@ -43,11 +42,13 @@ public class Intake8513 {
 
     }
 
+
 public int getSampleColor (){
     NormalizedRGBA colors = colorSensor.getNormalizedColors();
+    Color.colorToHSV(colors.toColor(), hsvValues);
     if (hsvValues[0]<20) {
         return 1;
-    } else if ((hsvValues[0]<60)&&(hsvValues[0]>30)) {
+    } else if ((hsvValues[0]<84)&&(hsvValues[0]>30)) {
         return 2;
     }
     else if ((hsvValues[0]<270)&&(hsvValues[0]>210)) {
