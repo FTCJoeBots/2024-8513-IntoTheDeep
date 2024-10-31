@@ -27,6 +27,7 @@ public class teleopMaize extends OpMode {
     Lift l = new Lift();
     horizantalSlide h= new horizantalSlide();
     clawMaize c= new clawMaize();
+    bucketMaize b= new bucketMaize();
 
 
 
@@ -35,14 +36,16 @@ public class teleopMaize extends OpMode {
         //i.init(hardwareMap);
         l.init(hardwareMap);
         h.init(hardwareMap);
-telemetry.addLine("initcomplete");
+        b.init(hardwareMap);
+        c.init(hardwareMap);
+telemetry.addLine("init complete");
 telemetry.update();
     }
 
     @Override
     public void loop() {
         // 1 - red
-        // 2 - yella
+        // 2 - yellow
         //3 -blue
         //WHICHTEAM=false = red  true=blue
         //*****Refactor this to an enumerated variable for readability
@@ -62,16 +65,20 @@ telemetry.update();
 */
 
 
+        //bucket
+        if (gamepad1.b) {
+            c.openClaw();
+        }
 
 
         forward=gamepad1.left_stick_y*-MAXSPEED;
-        rotate = gamepad1.right_stick_x*MAXSPEED;
+        rotate = -gamepad1.right_stick_x*MAXSPEED;
         strafe = gamepad1.left_trigger*MAXSPEED-gamepad1.right_trigger*MAXSPEED;
         //fix...put the object in this directory
-        d.driveMecanum(forward,strafe,rotate);
+        d.driveMecanum(forward,rotate,strafe);
 
 
-        if (gamepad2.a && !a_prev) {
+      /*  if (gamepad2.a && !a_prev) {
             if (!a_state) {
                 i.startintake();
                 a_state = true;
@@ -92,7 +99,7 @@ telemetry.update();
                 b_state = false;
             }
             b_prev=true;
-        }
+        }*/
 
 
 
@@ -100,19 +107,25 @@ telemetry.update();
 
 
         if(gamepad2.dpad_up){
-            l.liftmanualup();
+            l.liftGo(3);
 
         }
 
         if(gamepad2.dpad_down){
-            l.liftmanualdown();
+            l.liftGo(1);
         }
 
         if(gamepad2.dpad_right){
-            h.horizontalSlideManualOut();
+            l.liftGo(2);
         }
         if(gamepad2.dpad_left) {
+            l.liftGo(4);
+        }
+
+        if(gamepad2.left_stick_y>-0.15) {
             h.horizontalSlideManualIn();
+        }  if(gamepad2.left_stick_y>0.15) {
+            h.horizontalSlideManualOut();
         }
 
         telemetry.addData("Lift position:",l.rightLiftMotor.getCurrentPosition());

@@ -3,23 +3,39 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.NormalizedRGBA;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
+import com.qualcomm.robotcore.hardware.Servo;
+
 public class Intake8513 {
 
 
     public static final double INTAKESPEED = .2;
+
+    public static final double INTAKEDOWN = .5;
+    public static final double INTAKEUP = .5;
     int sample_color=-1;
     final float[] hsvValues = new float[3];
     CRServo leftIntakeServo = null;
     CRServo rightIntakeServo = null;
+    Servo wristServo = null;
     NormalizedColorSensor colorSensor;
 
     void init (HardwareMap hwmap){
        colorSensor = hwmap.get(NormalizedColorSensor.class, "ColorSensor");
        leftIntakeServo = hwmap.get(CRServo.class,"leftintake");
        leftIntakeServo = hwmap.get(CRServo.class,"rightintake");
+        wristServo=hwmap.get(Servo.class, "wristServo");
        stopintake();
     }
+    public void intakeUp(){
+        wristServo.setPosition(INTAKEUP);
 
+    }
+
+    public void intakeDown(){
+        wristServo.setPosition(INTAKEDOWN);
+
+    }
+// push slide put and drop intake wrist
     void stopintake (){
         leftIntakeServo.setPower(0);
         rightIntakeServo.setPower(0);

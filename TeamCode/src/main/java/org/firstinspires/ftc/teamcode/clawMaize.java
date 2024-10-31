@@ -1,6 +1,7 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -16,6 +17,9 @@ public class clawMaize
     //init
     public void init (HardwareMap hwmap) {
         //get the servo from the controlhub
+        //rightLiftMotor = hwmap.get(DcMotor.class,"rightLiftMotor");
+
+        clawServo=hwmap.get(Servo.class, "wristServo");
     }
     //methods
     public void openClaw () {
