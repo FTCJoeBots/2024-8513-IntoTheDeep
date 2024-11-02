@@ -33,9 +33,9 @@ public class teleopMaize extends OpMode {
 
     public void init(){
         d.init(hardwareMap);
-        //i.init(hardwareMap);
-        l.init(hardwareMap);
         h.init(hardwareMap);
+        i.init(hardwareMap);
+        l.init(hardwareMap);
         b.init(hardwareMap);
         c.init(hardwareMap);
 telemetry.addLine("init complete");
@@ -66,10 +66,29 @@ telemetry.update();
 
 
         //bucket
-        if (gamepad1.b) {
-            c.openClaw();
+        if (gamepad2.b) {
+            i.reverseintake();
         }
 
+        if (gamepad2.a) {
+            i.intakeDown();
+
+        }
+
+// toggle this
+        if (gamepad2.y) {
+            i.intakeDown();
+        }
+
+       if (gamepad2.right_bumper){
+            i.intakeUp();
+        }
+        //hold
+        if (gamepad2.x){
+            b.openbucket();
+        } else {
+            b.closedBucket();
+        }
 
         forward=gamepad1.left_stick_y*-MAXSPEED;
         rotate = -gamepad1.right_stick_x*MAXSPEED;
@@ -104,11 +123,10 @@ telemetry.update();
 
 
 
-
+        //Operator Stuff; Lift (Vertical & Horizontal)
 
         if(gamepad2.dpad_up){
             l.liftGo(3);
-
         }
 
         if(gamepad2.dpad_down){
@@ -122,15 +140,20 @@ telemetry.update();
             l.liftGo(4);
         }
 
-        if(gamepad2.left_stick_y>-0.15) {
-            h.horizontalSlideManualIn();
+       /* if(gamepad2.left_stick_y<-0.15) {
+            h.horizontalSlideJoystick(gamepad2.left_stick_y);
         }  if(gamepad2.left_stick_y>0.15) {
-            h.horizontalSlideManualOut();
+            h.horizontalSlideJoystick(gamepad2.left_stick_y);
+        }*/
+if (gamepad2.left_stick_y<-.15) {
+    h.horizontalSlideManualOut();
+}
+        if (gamepad2.left_stick_y>.15) {
+            h.horizontalSlideManualIn();
         }
-
         telemetry.addData("Lift position:",l.rightLiftMotor.getCurrentPosition());
         telemetry.addData("Slide position:",h.slideMotor.getCurrentPosition());
-
+        telemetry.addData("left stick:",gamepad2.left_stick_y);
         telemetry.update();
     }
 

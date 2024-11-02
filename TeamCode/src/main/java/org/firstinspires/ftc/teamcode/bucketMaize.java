@@ -9,7 +9,7 @@ public class bucketMaize
 {
     //contants
     public static final double BUCKETCLOSED = 0.2;
-    public static final double BUCKETOPENED = 0.4;
+    public static final double BUCKETOPENED = 0.91;
 
     //variables
     Servo bucketServo;
@@ -18,9 +18,7 @@ public class bucketMaize
     public void init (HardwareMap hwmap) {
         //get the servo from the controlhub
         bucketServo=hwmap.get(Servo.class,"bucketServo");
-        bucketServo.setDirection(Servo.Direction.REVERSE);
-        bucketServo.setPosition(12);
-
+bucketServo.setPosition(BUCKETCLOSED);
         //to set an init position
     }
     //methods

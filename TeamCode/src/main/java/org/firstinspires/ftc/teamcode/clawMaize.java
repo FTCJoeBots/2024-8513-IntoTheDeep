@@ -8,8 +8,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class clawMaize
 {
     //contants
-    public static final double CLAWCLOSED = 0.2;
-    public static final double CLAWOPENED = 0.4;
+    public static final double CLAWCLOSED = 0.7;
+    public static final double CLAWOPENED = 0.6;
 
     //variables
     Servo clawServo = null;
@@ -19,7 +19,7 @@ public class clawMaize
         //get the servo from the controlhub
         //rightLiftMotor = hwmap.get(DcMotor.class,"rightLiftMotor");
 
-        clawServo=hwmap.get(Servo.class, "wristServo");
+        clawServo=hwmap.get(Servo.class, "clawServo");
     }
     //methods
     public void openClaw () {

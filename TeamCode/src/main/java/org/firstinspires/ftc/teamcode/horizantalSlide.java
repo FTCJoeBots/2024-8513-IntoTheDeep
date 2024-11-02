@@ -7,9 +7,11 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class horizantalSlide {
      public static final int MINMIUMSLIDEPOSITION = 20;
-     public static final int MAXIMUMSLIDEPOSITION = 111;
-     public static final double HORIZONTIALSLIDESPEED = .2;
-     public static final int MANUALSLIDEINCREMENT = 10;
+    public static final int INITIALSLIDEPOSITION = 350;
+     public static final int MAXIMUMSLIDEPOSITION = 2325;
+     public static final double HORIZONTIALSLIDESPEED = .8;
+    public static int MANUALSLIDEINCREMENT = 75;
+    public static double MANUALSLIDEINCREMENT2 = 75;
 
 
     DcMotor slideMotor = null;
@@ -20,7 +22,8 @@ public class horizantalSlide {
          slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
          slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
          slideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-         slideMotor.setTargetPosition(MINMIUMSLIDEPOSITION);
+         slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+         slideMotor.setTargetPosition(INITIALSLIDEPOSITION);
          slideMotor.setPower(HORIZONTIALSLIDESPEED);
 
 
@@ -42,8 +45,21 @@ public class horizantalSlide {
         int currentSlidePosition = 0;
         int newSlidePosition = 0;
         currentSlidePosition = slideMotor.getCurrentPosition();
-        if (currentSlidePosition-MANUALSLIDEINCREMENT < MINMIUMSLIDEPOSITION) {
+        if (currentSlidePosition-MANUALSLIDEINCREMENT > MINMIUMSLIDEPOSITION) {
             newSlidePosition = currentSlidePosition-MANUALSLIDEINCREMENT;
+            slideMotor.setTargetPosition(newSlidePosition);
+            slideMotor.setPower(HORIZONTIALSLIDESPEED);
+        }
+    }
+
+    public void horizontalSlideJoystick (double yPos) {
+        int currentSlidePosition = 0;
+        MANUALSLIDEINCREMENT2 = yPos * 10;
+        int newSlidePosition = 0;
+        currentSlidePosition = slideMotor.getCurrentPosition();
+        int blank = Math.toIntExact(Math.round(currentSlidePosition-MANUALSLIDEINCREMENT2));
+        if (MINMIUMSLIDEPOSITION < blank && blank < MAXIMUMSLIDEPOSITION) {
+            newSlidePosition = Math.toIntExact(Math.round(currentSlidePosition-MANUALSLIDEINCREMENT2));
             slideMotor.setTargetPosition(newSlidePosition);
             slideMotor.setPower(HORIZONTIALSLIDESPEED);
         }

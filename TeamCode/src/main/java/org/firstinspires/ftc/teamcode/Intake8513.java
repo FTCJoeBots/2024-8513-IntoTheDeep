@@ -8,10 +8,10 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class Intake8513 {
 
 
-    public static final double INTAKESPEED = .2;
+    public static final double INTAKESPEED = -.4;
 
-    public static final double INTAKEDOWN = .5;
-    public static final double INTAKEUP = .5;
+    public static final double INTAKEDOWN = 0;
+    public static final double INTAKEUP = 1;
     int sample_color=-1;
     final float[] hsvValues = new float[3];
     CRServo leftIntakeServo = null;
@@ -21,10 +21,11 @@ public class Intake8513 {
 
     void init (HardwareMap hwmap){
        colorSensor = hwmap.get(NormalizedColorSensor.class, "ColorSensor");
-       leftIntakeServo = hwmap.get(CRServo.class,"leftintake");
-       leftIntakeServo = hwmap.get(CRServo.class,"rightintake");
+       leftIntakeServo = hwmap.get(CRServo.class,"leftIntake");
+       rightIntakeServo = hwmap.get(CRServo.class,"rightIntake");
         wristServo=hwmap.get(Servo.class, "wristServo");
        stopintake();
+       intakeDown();
     }
     public void intakeUp(){
         wristServo.setPosition(INTAKEUP);
