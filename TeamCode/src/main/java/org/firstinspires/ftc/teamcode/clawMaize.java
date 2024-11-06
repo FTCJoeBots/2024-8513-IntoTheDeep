@@ -20,7 +20,9 @@ public class clawMaize
         //rightLiftMotor = hwmap.get(DcMotor.class,"rightLiftMotor");
 
         clawServo=hwmap.get(Servo.class, "clawServo");
+        openClaw();
     }
+
     //methods
     public void openClaw () {
         clawServo.setPosition(CLAWOPENED);
