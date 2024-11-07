@@ -1,9 +1,12 @@
 package org.firstinspires.ftc.teamcode;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.NormalizedRGBA;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
 import com.qualcomm.robotcore.hardware.Servo;
+
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 public class Intake8513 {
 
@@ -11,7 +14,7 @@ public class Intake8513 {
     public static final double INTAKESPEED = -.4;
 
     public static final double INTAKEDOWN = 0;
-    public static final double INTAKEUP = 1;
+    public static final double INTAKEUP = .726;
     int sample_color=-1;
     final float[] hsvValues = new float[3];
     CRServo leftIntakeServo = null;
@@ -62,18 +65,19 @@ public class Intake8513 {
 
 public int getSampleColor (){
     NormalizedRGBA colors = colorSensor.getNormalizedColors();
-    if (hsvValues[0]<20) {
-        return 1;
-    } else if ((hsvValues[0]<60)&&(hsvValues[0]>30)) {
-        return 2;
-    }
-    else if ((hsvValues[0]<270)&&(hsvValues[0]>210)) {
-        return 3;
-    }
-    else {
-        return -1;
-    }
-
+   if(((DistanceSensor) colorSensor).getDistance(DistanceUnit.CM) < 3) {
+       if (hsvValues[0] < 20 || hsvValues[0] > 310) {//Red
+           return 1;
+       } else if ((hsvValues[0] < 80) && (hsvValues[0] > 60)) {//Yellow
+           return 2;
+       } else if ((hsvValues[0] < 255) && (hsvValues[0] > 240)) {//Blue
+           return 3;
+       } else {
+           return -1;
+       }
+   }else {
+       return -1;
+   }
 
     //return color (as integer)
 /*

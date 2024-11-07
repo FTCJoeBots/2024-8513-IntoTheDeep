@@ -8,11 +8,11 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class Lift {
     //constants
     public static final int LIFTLOWPOINT = 10;
-    public static final int LIFTHIGHPOINT = 3800;
+    public static final int LIFTHIGHPOINT = 4330;
     public static final double LIFTSPEED = .5;
     public static final int LIFTMANUALINC = 30;
     public static final int LIFTHIGHBAR = 2041;
-    public static final int LIFTHIGHBUCKET = 3750;
+    public static final int LIFTHIGHBUCKET = 4000;
     public static final int LIFTLOWBUCKET = 1865;
 
     //variables

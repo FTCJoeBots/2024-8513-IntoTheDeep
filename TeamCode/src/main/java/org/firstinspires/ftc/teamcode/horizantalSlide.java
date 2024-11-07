@@ -10,8 +10,8 @@ public class horizantalSlide {
     public static final int INITIALSLIDEPOSITION = 350;
      public static final int MAXIMUMSLIDEPOSITION = 2325;
      public static final double HORIZONTIALSLIDESPEED = .9;
-    public static int MANUALSLIDEINCREMENT = 75;
-    public static double MANUALSLIDEINCREMENT2 = 75;
+    public static int MANUALSLIDEINCREMENT = 95;
+    public static double MANUALSLIDEINCREMENT2 = 95;
 
 
     DcMotor slideMotor = null;
@@ -74,6 +74,9 @@ public class horizantalSlide {
 
 
        }
+    }
+    public int returnEncoderPosition(){
+        return slideMotor.getCurrentPosition();
     }
 
 }

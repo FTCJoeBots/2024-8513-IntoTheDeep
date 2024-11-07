@@ -28,13 +28,14 @@ public class teleopMaize extends OpMode {
     boolean x_prev = false;
     boolean lb_state=false;
     boolean lb_prev = false;
-    public final double MAXSPEED = .3;
+    public final double MAXSPEED = .75;
     TeleOpMecanum d = new TeleOpMecanum();
     Intake8513 i = new Intake8513();
     Lift l = new Lift();
     horizantalSlide h= new horizantalSlide();
     clawMaize c= new clawMaize();
     bucketMaize b= new bucketMaize();
+
 
 
 
@@ -57,19 +58,24 @@ telemetry.update();
         //WHICHTEAM=false = red  true=blue
         //*****Refactor this to an enumerated variable for readability
 
-        /*
-        if(i.getSampleColor()>0){
+        //Sample
+        if(i.getSampleColor()>0 && !rb_state){
             i.stopintake();
             //get rid of it if we have a red and we're the blue team
             if((i.getSampleColor()==1)&&(WHICHTEAM)){
                 i.startintake();
+                y_state = false;
             }
             //get rid of it if we have a blue and we're the red team
             if((i.getSampleColor()==3)&&(!WHICHTEAM)){
                 i.startintake();
+                y_state = false;
             }
         }
-*/
+
+
+
+
 
 
 
@@ -105,9 +111,11 @@ telemetry.update();
             if (!rb_state) {
                 i.intakeUp();
                 rb_state = true;
+                i.stopintake();
             } else {
                 i.intakeDown();
                 rb_state = false;
+               // i.startintake();
             }
 
         }
@@ -139,8 +147,14 @@ telemetry.update();
         x_prev=gamepad2.x;
 
 
+//automatically puts wrist up
+if (h.returnEncoderPosition() < 400){
+
+    i.intakeUp();
+    rb_state = true;
 
 
+}
 
 
 
@@ -149,35 +163,54 @@ telemetry.update();
 
         if(gamepad2.dpad_up){
             l.liftGo(3);
+            i.stopintake();
         }
 
         if(gamepad2.dpad_down){
             l.liftGo(1);
+
         }
 
         if(gamepad2.dpad_right){
             l.liftGo(2);
+            i.stopintake();
         }
         if(gamepad2.dpad_left) {
             l.liftGo(4);
+            i.stopintake();
         }
 
        /* if(gamepad2.left_stick_y<-0.15) {
             h.horizontalSlideJoystick(gamepad2.left_stick_y);
         }  if(gamepad2.left_stick_y>0.15) {
             h.horizontalSlideJoystick(gamepad2.left_stick_y);
-        }*/
+       }*/
+
+        //manual intake sliders
 if (gamepad2.left_stick_y<-.15) {
     h.horizontalSlideManualOut();
 }
         if (gamepad2.left_stick_y>.15) {
             h.horizontalSlideManualIn();
         }
-       // telemetry.addData("distance",i.colorSensor.getDistance(DistanceUnit.CM));
+
+        if (gamepad2.right_stick_y<-.15) {
+          l.liftmanualdown();
+        }
+        if (gamepad2.right_stick_y>.15) {
+            l.liftmanualup();
+        }
+
+
+
+            // telemetry.addData("distance",i.colorSensor.getDistance(DistanceUnit.CM));
         telemetry.addData("Lift position:",l.rightLiftMotor.getCurrentPosition());
         telemetry.addData("Slide position:",h.slideMotor.getCurrentPosition());
         telemetry.addData("left stick:",gamepad2.left_stick_y);
         telemetry.update();
+
+
+
     }
 
 
