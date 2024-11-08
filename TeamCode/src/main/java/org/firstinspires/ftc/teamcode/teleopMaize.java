@@ -147,8 +147,13 @@ telemetry.update();
         x_prev=gamepad2.x;
 
 
+        if (gamepad2.left_stick_button) {
+
+
+        h.horizontalSlideDirect(21);
+        }
 //automatically puts wrist up
-if (h.returnEncoderPosition() < 400){
+if (h.returnEncoderPosition() < 150){
 
     i.intakeUp();
     rb_state = true;

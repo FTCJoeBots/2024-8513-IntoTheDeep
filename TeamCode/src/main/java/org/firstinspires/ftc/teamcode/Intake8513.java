@@ -14,7 +14,7 @@ public class Intake8513 {
     public static final double INTAKESPEED = -.4;
 
     public static final double INTAKEDOWN = 0;
-    public static final double INTAKEUP = .726;
+    public static final double INTAKEUP = .78;
     int sample_color=-1;
     final float[] hsvValues = new float[3];
     CRServo leftIntakeServo = null;
@@ -28,7 +28,7 @@ public class Intake8513 {
        rightIntakeServo = hwmap.get(CRServo.class,"rightIntake");
         wristServo=hwmap.get(Servo.class, "wristServo");
        stopintake();
-       intakeDown();
+      // intakeDown();
     }
     public void intakeUp(){
         wristServo.setPosition(INTAKEUP);
