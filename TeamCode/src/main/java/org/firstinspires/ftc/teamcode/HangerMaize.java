@@ -10,7 +10,7 @@ public class HangerMaize {
     public static final int HANGERLOWPOINT = 10;
     public static final int HANGERHANGS = 800;
     public static final double HANGERSPEED = .5;
-    public static final int HANGERHIGHPOINT = 1000;
+    public static final int HANGERHIGHPOINT = 2500;
 
     //variables
     DcMotor hangerMotor = null;
@@ -24,7 +24,7 @@ public class HangerMaize {
         hangerMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         hangerMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         hangerMotor.setPower(0);
-        hangerMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+       // hangerMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         hangerautodown();
     }

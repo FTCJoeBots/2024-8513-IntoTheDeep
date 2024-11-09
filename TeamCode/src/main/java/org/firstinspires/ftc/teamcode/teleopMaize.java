@@ -45,6 +45,7 @@ public class teleopMaize extends OpMode {
     public void init(){
         d.init(hardwareMap);
         h.init(hardwareMap);
+        H.init(hardwareMap);
         i.init(hardwareMap);
         l.init(hardwareMap);
         b.init(hardwareMap);
@@ -115,9 +116,12 @@ telemetry.update();
 
         }
 
-       // if (gamepad1.right_bumper) {
-           // H.hangerautoup();
-        //}
+       if (gamepad1.right_bumper) {
+            H.hangerautoup();
+        }
+       if (gamepad1.left_bumper) {
+           H.hangerautodown();
+       }
 
         if (gamepad2.left_bumper && !lb_prev) {
             if (!lb_state) {
@@ -240,6 +244,7 @@ if (gamepad2.left_stick_y<-.15) {
         telemetry.addData("Lift position:",l.rightLiftMotor.getCurrentPosition());
         telemetry.addData("Slide position:",h.slideMotor.getCurrentPosition());
         telemetry.addData("left stick:",gamepad2.left_stick_y);
+        telemetry.addData("Hanger encoder:",H.hangerMotor.getCurrentPosition());
         telemetry.addData("lift",gamepad2.right_stick_y);
 
         telemetry.update();
