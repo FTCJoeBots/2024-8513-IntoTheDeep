@@ -164,7 +164,7 @@ public class ColorSensorMaize extends LinearOpMode {
 
       // Tell the sensor our desired gain value (normally you would do this during initialization,
       // not during the loop)
-      colorSensor.setGain(gain);
+     // colorSensor.setGain(gain);
 
       // Check the status of the X button on the gamepad
       xButtonCurrentlyPressed = gamepad1.x;

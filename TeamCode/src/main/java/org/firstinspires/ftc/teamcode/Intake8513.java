@@ -1,4 +1,6 @@
 package org.firstinspires.ftc.teamcode;
+import android.graphics.Color;
+
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.NormalizedRGBA;
@@ -11,7 +13,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 public class Intake8513 {
 
 
-    public static final double INTAKESPEED = -.4;
+    public static final double INTAKESPEED = -.3;
 
     public static final double INTAKEDOWN = 0;
     public static final double INTAKEUP = .78;
@@ -27,6 +29,7 @@ public class Intake8513 {
        leftIntakeServo = hwmap.get(CRServo.class,"leftIntake");
        rightIntakeServo = hwmap.get(CRServo.class,"rightIntake");
         wristServo=hwmap.get(Servo.class, "wristServo");
+        //colorSensor.setGain(2);
        stopintake();
       // intakeDown();
     }
@@ -65,12 +68,14 @@ public class Intake8513 {
 
 public int getSampleColor (){
     NormalizedRGBA colors = colorSensor.getNormalizedColors();
-   if(((DistanceSensor) colorSensor).getDistance(DistanceUnit.CM) < 3) {
-       if (hsvValues[0] < 20 || hsvValues[0] > 310) {//Red
+    Color.colorToHSV(colors.toColor(), hsvValues);
+
+    if(((DistanceSensor) colorSensor).getDistance(DistanceUnit.CM) < 3) {
+       if ((hsvValues[0] < 46) || (hsvValues[0] > 300)) {//Red
            return 1;
-       } else if ((hsvValues[0] < 80) && (hsvValues[0] > 60)) {//Yellow
+       } else if ((hsvValues[0] < 150) && (hsvValues[0] > 47)) {//Yellow
            return 2;
-       } else if ((hsvValues[0] < 255) && (hsvValues[0] > 240)) {//Blue
+       } else if ((hsvValues[0] < 255) && (hsvValues[0] > 150)) {//Blue
            return 3;
        } else {
            return -1;

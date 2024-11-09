@@ -1,4 +1,6 @@
-package org.firstinspires.ftc.teamcode;
+// glitchy code for when driving for blue team
+
+/*package org.firstinspires.ftc.teamcode;
 import com.acmerobotics.roadrunner.drive.MecanumDrive;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -11,7 +13,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 
 
-@TeleOp(name="TeleOp Maize | RED ")
+@TeleOp(name="TeleOp Maize | BLUE ")
 
 
 public class teleopMaize extends OpMode {
@@ -49,8 +51,8 @@ public class teleopMaize extends OpMode {
         l.init(hardwareMap);
         b.init(hardwareMap);
         c.init(hardwareMap);
-telemetry.addLine("init complete");
-telemetry.update();
+        telemetry.addLine("init complete");
+        telemetry.update();
     }
 
     @Override
@@ -62,12 +64,12 @@ telemetry.update();
         //*****Refactor this to an enumerated variable for readability
 
         //Sample
-       // telemetry.addData("GetSampleColor:",i.hsvValues[0]);
+        // telemetry.addData("GetSampleColor:",i.hsvValues[0]);
         if(i.getSampleColor()>0 && !rb_state){
-            i.stopintake();
+            i.startintake();
             //get rid of it if we have a red and we're the blue team
             if((i.getSampleColor()==1)&&(WHICHTEAM)){
-                i.startintake();
+                i.stopintake();
                 y_state = false;
                 telemetry.addLine("ColorSensor: Red|BlueTeam");
                 telemetry.update();
@@ -115,9 +117,9 @@ telemetry.update();
 
         }
 
-       // if (gamepad1.right_bumper) {
-           // H.hangerautoup();
-        //}
+        if (gamepad1.right_bumper) {
+            H.hangerautoup();
+        }
 
         if (gamepad2.left_bumper && !lb_prev) {
             if (!lb_state) {
@@ -139,7 +141,7 @@ telemetry.update();
             } else {
                 i.intakeDown();
                 rb_state = false;
-               // i.startintake();
+                // i.startintake();
             }
 
         }
@@ -182,16 +184,16 @@ telemetry.update();
         if (gamepad2.left_stick_button) {
 
 
-        h.horizontalSlideDirect(21);
+            h.horizontalSlideDirect(21);
         }
 //automatically puts wrist up
-if (h.returnEncoderPosition() < 150){
+        if (h.returnEncoderPosition() < 150){
 
-    i.intakeUp();
-    rb_state = true;
+            i.intakeUp();
+            rb_state = true;
 
 
-}
+        }
 
 
 
@@ -217,31 +219,33 @@ if (h.returnEncoderPosition() < 150){
             i.stopintake();
         }
 
-
+       /* if(gamepad2.left_stick_y<-0.15) {
+            h.horizontalSlideJoystick(gamepad2.left_stick_y);
+        }  if(gamepad2.left_stick_y>0.15) {
+            h.horizontalSlideJoystick(gamepad2.left_stick_y);
+       }
 
         //manual intake sliders
-if (gamepad2.left_stick_y<-.15) {
-    h.horizontalSlideManualOut();
-}
+        if (gamepad2.left_stick_y<-.15) {
+            h.horizontalSlideManualOut();
+        }
         if (gamepad2.left_stick_y>.15) {
             h.horizontalSlideManualIn();
         }
 
-        if (gamepad2.right_stick_y>.15) {
-          l.liftmanualdown();
+        if (gamepad2.right_stick_y<.15) {
+            l.liftmanualdown();
         }
-        if (gamepad2.right_stick_y<-.15) {
+        if (gamepad2.right_stick_y>-.15) {
             l.liftmanualup();
         }
 
 
 
-            // telemetry.addData("distance",i.colorSensor.getDistance(DistanceUnit.CM));
+        // telemetry.addData("distance",i.colorSensor.getDistance(DistanceUnit.CM));
         telemetry.addData("Lift position:",l.rightLiftMotor.getCurrentPosition());
         telemetry.addData("Slide position:",h.slideMotor.getCurrentPosition());
         telemetry.addData("left stick:",gamepad2.left_stick_y);
-        telemetry.addData("lift",gamepad2.right_stick_y);
-
         telemetry.update();
 
 
@@ -256,3 +260,4 @@ if (gamepad2.left_stick_y<-.15) {
 
 }
 
+*/
