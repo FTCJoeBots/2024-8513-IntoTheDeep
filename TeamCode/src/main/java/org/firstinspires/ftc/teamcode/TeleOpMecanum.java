@@ -42,17 +42,13 @@ public class    TeleOpMecanum {
 
     public void init(HardwareMap hwMap) {
         motor0 = hwMap.get(DcMotor.class, "leftFront");
-        motor0.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+       // motor0.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor1 = hwMap.get(DcMotor.class, "rightFront");
-        motor1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    //    motor1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor2 = hwMap.get(DcMotor.class, "leftBack");
-        motor2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    //    motor2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor3 = hwMap.get(DcMotor.class, "rightBack");
-        motor3.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motor0.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motor1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motor2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motor3.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+   //     motor3.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
 

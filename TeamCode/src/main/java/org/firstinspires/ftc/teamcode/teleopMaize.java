@@ -23,7 +23,9 @@ public class teleopMaize extends OpMode {
     boolean lb_prev = false;
     boolean a_prev = false;
     boolean a_state = false;
-    public double MAXSPEED = .75;
+    double speed=0;
+    public static final double MAXSPEED = .5;
+    public static final double TURTLE = .3;
     TeleOpMecanum d = new TeleOpMecanum();
     Intake8513 i = new Intake8513();
     Lift l = new Lift();
@@ -92,18 +94,18 @@ telemetry.update();
             b.closedBucket();
         }
 
-        forward=gamepad1.left_stick_y*-MAXSPEED;
-        rotate = -gamepad1.right_stick_x*MAXSPEED;
-        strafe = gamepad1.left_trigger*MAXSPEED-gamepad1.right_trigger*MAXSPEED;
+        forward=gamepad1.left_stick_y*-speed;
+        rotate = -gamepad1.right_stick_x*speed;
+        strafe = gamepad1.left_trigger*MAXSPEED-gamepad1.right_trigger*speed;
         //fix...put the object in this directory
         d.driveMecanum(forward,rotate,strafe);
-
+telemetry.addData("left stick y",gamepad1.left_stick_y);
 
         if (gamepad1.a && !a_prev) {
             if(!a_state) {
-                MAXSPEED = 0.3;
+                speed = TURTLE;
             } else {
-                MAXSPEED = 0.8;
+                speed = MAXSPEED;
 
             }
 
