@@ -8,10 +8,10 @@ import org.firstinspires.ftc.robotcore.external.matrices.GeneralMatrixF;
 import org.firstinspires.ftc.robotcore.external.matrices.MatrixF;
 
 public class    TeleOpMecanum {
-    private DcMotor motor0;
-    private DcMotor motor1;
-    private DcMotor motor2;
-    private DcMotor motor3;
+     DcMotor motor0;
+     DcMotor motor1;
+     DcMotor motor2;
+     DcMotor motor3;
 
     public static double GEAR_RATIO = 1.0; // for simulator - ours should be 0.5f;
 
@@ -42,13 +42,18 @@ public class    TeleOpMecanum {
 
     public void init(HardwareMap hwMap) {
         motor0 = hwMap.get(DcMotor.class, "leftFront");
-       // motor0.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motor0.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor1 = hwMap.get(DcMotor.class, "rightFront");
-        //motor1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motor1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor2 = hwMap.get(DcMotor.class, "leftBack");
-        //motor2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motor2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor3 = hwMap.get(DcMotor.class, "rightBack");
-        //motor3.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motor3.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motor0.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motor1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motor2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motor3.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
 
 
 

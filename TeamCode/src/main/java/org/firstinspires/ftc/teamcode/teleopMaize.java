@@ -1,14 +1,7 @@
 package org.firstinspires.ftc.teamcode;
-import com.acmerobotics.roadrunner.drive.MecanumDrive;
+//import com.acmerobotics.roadrunner.
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DistanceSensor;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-
-
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 
 
 @TeleOp(name="TeleOp Maize | RED ")
@@ -246,6 +239,11 @@ if (gamepad2.left_stick_y<-.15) {
         telemetry.addData("left stick:",gamepad2.left_stick_y);
         telemetry.addData("Hanger encoder:",H.hangerMotor.getCurrentPosition());
         telemetry.addData("lift",gamepad2.right_stick_y);
+        telemetry.addData("leftFront", d.motor0.getCurrentPosition());
+        telemetry.addData("rightFront", d.motor1.getCurrentPosition());
+        telemetry.addData("leftBack", d.motor2.getCurrentPosition());
+        telemetry.addData("rightBack", d.motor3.getCurrentPosition());
+
 
         telemetry.update();
 
