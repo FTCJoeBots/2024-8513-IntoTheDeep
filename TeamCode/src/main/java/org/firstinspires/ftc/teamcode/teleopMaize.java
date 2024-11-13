@@ -1,7 +1,12 @@
 package org.firstinspires.ftc.teamcode;
-//import com.acmerobotics.roadrunner.
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+
+
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 
 @TeleOp(name="TeleOp Maize | RED ")
@@ -23,9 +28,7 @@ public class teleopMaize extends OpMode {
     boolean lb_prev = false;
     boolean a_prev = false;
     boolean a_state = false;
-    double speed=0;
-    public static final double MAXSPEED = .5;
-    public static final double TURTLE = .3;
+    public double MAXSPEED = .75;
     TeleOpMecanum d = new TeleOpMecanum();
     Intake8513 i = new Intake8513();
     Lift l = new Lift();
@@ -94,18 +97,18 @@ telemetry.update();
             b.closedBucket();
         }
 
-        forward=gamepad1.left_stick_y*-speed;
-        rotate = -gamepad1.right_stick_x*speed;
-        strafe = gamepad1.left_trigger*MAXSPEED-gamepad1.right_trigger*speed;
+        forward=gamepad1.left_stick_y*-MAXSPEED;
+        rotate = -gamepad1.right_stick_x*MAXSPEED;
+        strafe = gamepad1.left_trigger*MAXSPEED-gamepad1.right_trigger*MAXSPEED;
         //fix...put the object in this directory
         d.driveMecanum(forward,rotate,strafe);
-telemetry.addData("left stick y",gamepad1.left_stick_y);
+
 
         if (gamepad1.a && !a_prev) {
             if(!a_state) {
-                speed = TURTLE;
+                MAXSPEED = 0.3;
             } else {
-                speed = MAXSPEED;
+                MAXSPEED = 0.8;
 
             }
 
@@ -241,11 +244,6 @@ if (gamepad2.left_stick_y<-.15) {
         telemetry.addData("left stick:",gamepad2.left_stick_y);
         telemetry.addData("Hanger encoder:",H.hangerMotor.getCurrentPosition());
         telemetry.addData("lift",gamepad2.right_stick_y);
-        telemetry.addData("leftFront", d.motor0.getCurrentPosition());
-        telemetry.addData("rightFront", d.motor1.getCurrentPosition());
-        telemetry.addData("leftBack", d.motor2.getCurrentPosition());
-        telemetry.addData("rightBack", d.motor3.getCurrentPosition());
-
 
         telemetry.update();
 

@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class bucketMaize
 {
     //contants
-    public static final double BUCKETCLOSED = 0.13;
+    public static final double BUCKETCLOSED = 0.07;
     public static final double BUCKETOPENED = 0.91;
 
     //variables
