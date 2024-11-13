@@ -19,7 +19,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 //keep going
 @Config
 //Pratyush is better than Double A battery
-@Autonomous(name = "name", group = "hi")
+@Autonomous(name = "blueRight", group = "hi")
 public class Auto extends LinearOpMode {
 //ride down the street
     @Override
