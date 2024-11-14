@@ -53,7 +53,7 @@ public class    TeleOpMecanum {
         motor3 = hwMap.get(DcMotor.class, "rightBack");
    //     motor3.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-
+//DcMotor.ZeroPowerBehavior.FLOAT
 
 
         //Updated by gcf to test motor direction issues.
@@ -61,6 +61,11 @@ public class    TeleOpMecanum {
         motor1.setDirection(DcMotorSimple.Direction.REVERSE);
         motor2.setDirection(DcMotorSimple.Direction.REVERSE);
         motor3.setDirection(DcMotorSimple.Direction.FORWARD);
+
+        motor0.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motor1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motor2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motor3.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
     }
 

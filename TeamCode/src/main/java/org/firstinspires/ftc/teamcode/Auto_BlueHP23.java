@@ -1,26 +1,22 @@
 package org.firstinspires.ftc.teamcode;
-import androidx.annotation.NonNull;
 //very good auto
+
 import com.acmerobotics.dashboard.config.Config;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
-import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
-import com.acmerobotics.roadrunner.ParallelAction;
-import com.acmerobotics.roadrunner.SequentialAction;
-import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.Pose2d;
+import com.acmerobotics.roadrunner.SequentialAction;
 import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 //yeah
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
+
 //keep going
 @Config
 //Pratyush is better than Double A battery
-@Autonomous(name = "blueRight", group = "test")
-public class Auto extends LinearOpMode {
+@Autonomous(name = "BlueHumanPlayer23", group = "Blue")
+public class Auto_BlueHP23 extends LinearOpMode {
 //ride down the street
     @Override
     public void runOpMode() {

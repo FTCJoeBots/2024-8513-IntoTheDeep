@@ -1,26 +1,22 @@
 package org.firstinspires.ftc.teamcode;
-import androidx.annotation.NonNull;
 //very good auto
+
 import com.acmerobotics.dashboard.config.Config;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
-import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
-import com.acmerobotics.roadrunner.ParallelAction;
-import com.acmerobotics.roadrunner.SequentialAction;
-import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.Pose2d;
+import com.acmerobotics.roadrunner.SequentialAction;
 import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 //yeah
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
+
 //keep going
 @Config
 //Pratyush is better than Double A battery
-@Autonomous(name = "blueRight", group = "test")
-public class Auto extends LinearOpMode {
+@Autonomous(name = "BlueBucket23", group = "Blue")
+public class Auto_BlueBucket23 extends LinearOpMode {
 //ride down the street
     @Override
     public void runOpMode() {
@@ -42,21 +38,22 @@ public class Auto extends LinearOpMode {
         Action start = drive.actionBuilder(drive.pose)
                 //.lineToX(6)
                 .strafeToConstantHeading(new Vector2d( 0, 15))
-                .strafeToConstantHeading(new Vector2d( -22, 15))
-                .strafeToConstantHeading(new Vector2d( -22.1, 21))
+                .strafeToConstantHeading(new Vector2d( 22, 15))
+                .waitSeconds(0.0001)
+                .strafeToConstantHeading(new Vector2d( 22.1, 17))
                 .build();
 
         Action clip = drive.actionBuilder(drive.pose)
                 //.lineToX(6)
                 .stopAndAdd(l.Pos2())
                 .waitSeconds(2)
-                .strafeToConstantHeading(new Vector2d( -15, 23.5))
+                .strafeToConstantHeading(new Vector2d( 15, 23.5))
                 .waitSeconds(1)
                 .stopAndAdd(l.Pos1())
                 .waitSeconds(1)
                 .stopAndAdd(c.ClawOpen())
                 .waitSeconds(1)
-                .strafeToConstantHeading(new Vector2d( -10, 19))
+                .strafeToConstantHeading(new Vector2d( 10, 19))
                 .waitSeconds(1)
                 .stopAndAdd(l.Pos0())
                 .build();
@@ -64,9 +61,13 @@ public class Auto extends LinearOpMode {
                 Action park = drive.actionBuilder(drive.pose)
                         .stopAndAdd(l.Pos0())
                         .waitSeconds(0.5)
-                        .strafeToConstantHeading(new Vector2d(-8,-12))
+                        .strafeToConstantHeading(new Vector2d(-38,-12))
                         .waitSeconds(0.5)
-                        .strafeToConstantHeading(new Vector2d(50,-38))
+                        .strafeToConstantHeading(new Vector2d(-41,16))
+                        .waitSeconds(.3)
+                        .strafeToConstantHeading(new Vector2d(-29.9,18))
+                        .waitSeconds(.3)
+
                         .build();
 
         while(!isStopRequested() && !opModeIsActive()) {// Init loop

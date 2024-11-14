@@ -1,6 +1,11 @@
 package org.firstinspires.ftc.teamcode;
+import android.app.Notification;
 import android.graphics.Color;
 
+import androidx.annotation.NonNull;
+
+import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
+import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.NormalizedRGBA;
@@ -96,4 +101,96 @@ Blue is 210 to 270    3
 
 
 
-}
+        public class upIn implements Action {
+            public boolean loop(TelemetryPacket packet) {return false;}
+            @Override
+            public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+                intakeUp();
+                return false;}
+        }
+        public Action Up() {
+            return new upIn();
+        }
+
+
+
+
+    public class downIn implements Action {
+        public boolean loop(TelemetryPacket packet) {return false;}
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            intakeDown();
+            return false;}
+    }
+    public Action Down() {
+        return new downIn();
+    }
+
+
+
+    public class startInColorSensor implements Action {
+
+
+        public void init() {}
+        public boolean loop(TelemetryPacket packet) {
+
+            return false;
+        }
+
+
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            startintake();
+            while(getSampleColor() < 0){
+               // stopintake();
+            }
+            stopintake();
+
+            return false;
+        }
+    }
+
+    public class startIn implements Action {
+        public boolean loop(TelemetryPacket packet) {return false;}
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            startintake();
+            return false;}
+    }
+    public Action start() {
+        return new startIn();
+    }
+
+    public Action startInWithColorSensor() {
+        return new startInColorSensor();
+    }
+
+
+    public class stopIn implements Action {
+        public boolean loop(TelemetryPacket packet) {return false;}
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            stopintake();
+            return false;}
+    }
+    public Action stop() {
+        return new stopIn();
+    }
+
+
+    public class reverseIn implements Action {
+        public boolean loop(TelemetryPacket packet) {return false;}
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            reverseintake();
+            return false;}
+    }
+    public Action reverse() {
+        return new reverseIn();
+    }
+
+
+
+
+
+    }

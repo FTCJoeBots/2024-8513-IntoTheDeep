@@ -1,19 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DistanceSensor;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+@TeleOp(name="TeleOp Maize | BLUE ")
 
 
-@TeleOp(name="TeleOp Maize | RED ")
-
-
-public class teleopMaize extends OpMode {
-    boolean WHICHTEAM=false;   //0 is red,1 is blue
+public class teleopMaize_Blue extends OpMode {
+    boolean WHICHTEAM=true;   //0 is red,1 is blue
     double forward=0;
     double strafe=0;
     double rotate=0;

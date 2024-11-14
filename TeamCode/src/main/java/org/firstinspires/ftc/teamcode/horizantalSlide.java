@@ -1,5 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
+import androidx.annotation.NonNull;
+
+import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
+import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -23,8 +27,8 @@ public class horizantalSlide {
          slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
          slideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
          slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-         slideMotor.setTargetPosition(INITIALSLIDEPOSITION);
-         slideMotor.setPower(HORIZONTIALSLIDESPEED);
+        /* slideMotor.setTargetPosition(INITIALSLIDEPOSITION);
+         slideMotor.setPower(HORIZONTIALSLIDESPEED);*/
 
 
      }
@@ -75,8 +79,51 @@ public class horizantalSlide {
 
        }
     }
+
+
+
+
+
     public int returnEncoderPosition(){
         return slideMotor.getCurrentPosition();
     }
+
+    public class MediumSlidePosition implements Action {
+        public boolean loop(TelemetryPacket packet) {return false;}
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            horizontalSlideDirect(300);
+            return false;}
+    }
+    public Action Med() {
+        return new MediumSlidePosition();
+    }
+
+
+
+    public class BackIn implements Action {
+        public boolean loop(TelemetryPacket packet) {return false;}
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            horizontalSlideDirect(21);
+            return false;}
+    }
+    public Action Back() {
+        return new BackIn();
+    }
+
+    public class MoreOUt implements Action {
+        public boolean loop(TelemetryPacket packet) {return false;}
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            horizontalSlideDirect(950);
+            return false;}
+    }
+    public Action More() {
+        return new MoreOUt();
+    }
+
+
+
 
 }
