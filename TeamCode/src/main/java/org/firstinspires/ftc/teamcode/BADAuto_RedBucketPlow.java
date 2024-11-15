@@ -15,8 +15,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 //keep going
 @Config
 //Pratyush is better than Double A battery
-@Autonomous(name = "TEST", group = "Red")
-public class Auto_RedHPPickUp extends LinearOpMode {
+@Autonomous(name = "RedBucketPlow", group = "Testing")
+public class BADAuto_RedBucketPlow extends LinearOpMode {
 //ride down the street
     @Override
     public void runOpMode() {
@@ -40,7 +40,7 @@ public class Auto_RedHPPickUp extends LinearOpMode {
                 //.lineToX(6)
                 .stopAndAdd(i.Up())
                 .strafeToConstantHeading(new Vector2d( 0, 10))
-                .strafeToConstantHeading(new Vector2d( 37.7, 8))
+                .strafeToConstantHeading(new Vector2d( -37.7, 8))
                 .turn(Math.toRadians(166))
                 .build();
         Action intake = drive.actionBuilder(drive.pose)

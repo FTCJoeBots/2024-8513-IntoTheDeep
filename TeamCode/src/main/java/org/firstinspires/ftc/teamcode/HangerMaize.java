@@ -8,9 +8,9 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class HangerMaize {
     //constants
     public static final int HANGERLOWPOINT = 10;
-    public static final int HANGERHANGS = 800;
+    public static final int HANGERHANGS = 1000;
     public static final double HANGERSPEED = .5;
-    public static final int HANGERHIGHPOINT = 2500;
+    public static final int HANGERHIGHPOINT = 2800;
 
     //variables
     DcMotor hangerMotor = null;
@@ -20,6 +20,7 @@ public class HangerMaize {
     //init
     public void init(HardwareMap hwmap) {
         hangerMotor = hwmap.get(DcMotor.class, "hangerMotor");
+        hangerMotor.setTargetPosition(20);
         hangerMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         hangerMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         hangerMotor.setDirection(DcMotorSimple.Direction.FORWARD);

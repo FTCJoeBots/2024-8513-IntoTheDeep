@@ -31,6 +31,8 @@ public class Lift {
     public void init(HardwareMap hwmap) {
         rightLiftMotor = hwmap.get(DcMotor.class, "rightLiftMotor");
         leftLiftMotor = hwmap.get(DcMotor.class, "leftLiftMotor");
+        rightLiftMotor.setTargetPosition(2450);
+        leftLiftMotor.setTargetPosition(2450);
         rightLiftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftLiftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftLiftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

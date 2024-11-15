@@ -22,6 +22,7 @@ public class horizantalSlide {
      public void init (HardwareMap hwmap) {
          slideMotor = hwmap.get(DcMotor.class,"slidemotor");
          slideMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+         slideMotor.setTargetPosition(2300);
          slideMotor.setPower(0);
          slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
          slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -116,7 +117,7 @@ public class horizantalSlide {
         public boolean loop(TelemetryPacket packet) {return false;}
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
-            horizontalSlideDirect(950);
+            horizontalSlideDirect(1800);
             return false;}
     }
     public Action More() {
