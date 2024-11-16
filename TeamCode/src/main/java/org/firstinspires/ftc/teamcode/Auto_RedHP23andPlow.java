@@ -15,7 +15,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 //keep going
 @Config
 //Pratyush is better than Double A battery
-@Autonomous(name = "RedHP23Plow", group = "Red")
+@Autonomous(name = "BlueHP23Plow", group = "Red")
 public class Auto_RedHP23andPlow extends LinearOpMode {
     //ride down the street
     @Override
@@ -47,11 +47,11 @@ public class Auto_RedHP23andPlow extends LinearOpMode {
                 .stopAndAdd(l.Pos2())
                 .waitSeconds(2)
                 .strafeToConstantHeading(new Vector2d( -15, 23.5))
-                .waitSeconds(.7)
+                .waitSeconds(.5)
                 .stopAndAdd(l.Pos1())
-                .waitSeconds(.4)
-                .stopAndAdd(c.ClawOpen())
                 .waitSeconds(.3)
+                .stopAndAdd(c.ClawOpen())
+                .waitSeconds(.2)
                 .strafeToConstantHeading(new Vector2d( -10, 19))
                 .waitSeconds(.25)
                 .stopAndAdd(l.Pos0())
@@ -61,22 +61,22 @@ public class Auto_RedHP23andPlow extends LinearOpMode {
                 .stopAndAdd(l.Pos0())
                 .waitSeconds(0.3)
                 .strafeToConstantHeading(new Vector2d(25,-3))
-                .waitSeconds(0.3)
-                .strafeToConstantHeading(new Vector2d(26,14))
-                .waitSeconds(0.2)
+                .waitSeconds(0.1)
+                .strafeToConstantHeading(new Vector2d(26,10))
+                .waitSeconds(0.1)
                 .turn(-1.4)
                 .waitSeconds(.2)
-                .strafeToConstantHeading(new Vector2d(32,13))
-                .waitSeconds(0.2)
-                .strafeToConstantHeading(new Vector2d(32,-38))
-                .strafeToConstantHeading(new Vector2d(32,13))
+                .strafeToConstantHeading(new Vector2d(34,7))
+                .waitSeconds(0.1)
+                .strafeToConstantHeading(new Vector2d(37,-47))
+                .strafeToConstantHeading(new Vector2d(38,8))
                 .turn(-0.22)
-                .strafeToConstantHeading(new Vector2d(43,13))
-                .strafeToConstantHeading(new Vector2d(43.5,-38))
-                .strafeToConstantHeading(new Vector2d(44,13))
+                .strafeToConstantHeading(new Vector2d(46,8))
+                .strafeToConstantHeading(new Vector2d(46,-47))
+                .strafeToConstantHeading(new Vector2d(49,7))
                 .turn(-0.09)
-                .strafeToConstantHeading(new Vector2d(56,13))
-                .strafeToConstantHeading(new Vector2d(57,-38))
+                .strafeToConstantHeading(new Vector2d(57,8))
+                .strafeToConstantHeading(new Vector2d(58,-47))
                 .build();
 
         while(!isStopRequested() && !opModeIsActive()) {// Init loop

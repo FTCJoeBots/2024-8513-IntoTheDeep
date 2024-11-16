@@ -14,7 +14,7 @@ public class Lift {
     public static final int LIFTLOWPOINT = 10;
     public static final int LIFTHIGHPOINT = 4330;
     public static final double LIFTSPEED = .9;
-    public static final int LIFTMANUALINC = 43;
+    public static final int LIFTMANUALINC = 55;
     public static final int LIFTHIGHBAR = 2141;
     public static final int LIFTHIGHBUCKET = 4000;
     public static final int LIFTLOWBUCKET = 1865;
