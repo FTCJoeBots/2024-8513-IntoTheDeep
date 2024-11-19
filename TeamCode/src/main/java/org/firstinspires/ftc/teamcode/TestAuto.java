@@ -66,13 +66,14 @@ Action plow = drive.actionBuilder(drive.pose)
         .stopAndAdd(l.Pos1())
         .waitSeconds(0.1)
         .strafeToConstantHeading(new Vector2d(20,-43))
-        .strafeToConstantHeading(new Vector2d(16,-5))
+        .strafeToConstantHeading(new Vector2d(24,-5))
         .turn(1.3)
         .stopAndAdd(l.Pos2())
-        .strafeToConstantHeading(new Vector2d(16,-3))
+        .strafeToConstantHeading(new Vector2d(24,-3))
         .stopAndAdd(l.Pos1())
+        .waitSeconds(0.8)
         .stopAndAdd(c.ClawOpen())
-        .strafeToConstantHeading(new Vector2d(16,-20))
+        .strafeToConstantHeading(new Vector2d(24,-20))
         .build();
 
 

@@ -50,6 +50,8 @@ public class Auto_RedHP23andPlow extends LinearOpMode {
                 .waitSeconds(.2)
                 .stopAndAdd(l.Pos1())
                 .waitSeconds(.2)
+
+
                 .stopAndAdd(c.ClawOpen())
                 .waitSeconds(.2)
                 .strafeToConstantHeading(new Vector2d( -10, 19))
