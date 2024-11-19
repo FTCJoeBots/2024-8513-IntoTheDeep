@@ -34,7 +34,6 @@ public class clawMaize
     public void closedClaw() {
         clawServo.setPosition(CLAWCLOSED);
     }
-
     public class OpenClaw implements Action {
         public boolean loop(TelemetryPacket packet) {return false;}
         @Override
@@ -44,5 +43,17 @@ public class clawMaize
     }
     public Action ClawOpen() {
         return new OpenClaw();
+    }
+
+
+    public class ClosedClaw implements Action {
+        public boolean loop(TelemetryPacket packet) {return false;}
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            closedClaw();
+            return false;}
+    }
+    public Action CloseClaw() {
+        return new ClosedClaw();
     }
 }

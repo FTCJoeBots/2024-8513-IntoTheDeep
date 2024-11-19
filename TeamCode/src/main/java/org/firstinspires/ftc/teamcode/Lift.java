@@ -168,4 +168,19 @@ public class Lift {
         return new Downlift();
     }
 
+
+
+
+    public class DownClipAuto implements Action {
+        public boolean loop(TelemetryPacket packet) {return false;}
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            liftToPos(150);
+            return false;}
+    }
+
+    public Action Pos3() {
+        return new DownClipAuto();
+    }
+
 }

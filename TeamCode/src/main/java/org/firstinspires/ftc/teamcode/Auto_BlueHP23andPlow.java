@@ -15,7 +15,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 //keep going
 @Config
 //Pratyush is better than Double A battery
-@Autonomous(name = "BlueHP23Plow", group = "Red")
+@Autonomous(name = "BlueHP23Plow", group = "Blue")
 public class Auto_BlueHP23andPlow extends LinearOpMode {
     //ride down the street
     @Override
@@ -60,19 +60,19 @@ public class Auto_BlueHP23andPlow extends LinearOpMode {
         Action plow = drive.actionBuilder(drive.pose)
                 .stopAndAdd(l.Pos0())
                 .waitSeconds(0.3)
-                .strafeToConstantHeading(new Vector2d(25,-3))
+                .strafeToConstantHeading(new Vector2d(29,-3))
                 .waitSeconds(0.1)
-                .strafeToConstantHeading(new Vector2d(26,10))
+                .strafeToConstantHeading(new Vector2d(30,10))
                 .waitSeconds(0.1)
                 .turn(-1.4)
                 .waitSeconds(.2)
-                .strafeToConstantHeading(new Vector2d(34,7))
+                .strafeToConstantHeading(new Vector2d(36,9))
                 .waitSeconds(0.1)
-                .strafeToConstantHeading(new Vector2d(37,-47))
+                .strafeToConstantHeading(new Vector2d(37.1,-47))
                 .strafeToConstantHeading(new Vector2d(38,8))
-                .turn(-0.22)
-                .strafeToConstantHeading(new Vector2d(46,8))
-                .strafeToConstantHeading(new Vector2d(46,-47))
+                .turn(-0.2)
+                .strafeToConstantHeading(new Vector2d(47,8))
+                .strafeToConstantHeading(new Vector2d(47,-47))
                 .strafeToConstantHeading(new Vector2d(49,7))
                 .turn(-0.09)
                 .strafeToConstantHeading(new Vector2d(57,8))
