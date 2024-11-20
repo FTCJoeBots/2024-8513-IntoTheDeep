@@ -33,7 +33,7 @@ public class HangerMaize {
         hangerMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         hangerMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         hangerMotor.setPower(0);
-        hangerServo = hwmap.get(Servo.class, "clawServo");
+        hangerServo = hwmap.get(Servo.class, "hangerServo");
         hangerautodown();
        // hangerMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
