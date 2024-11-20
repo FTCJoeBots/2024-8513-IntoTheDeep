@@ -1,8 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
+import androidx.annotation.NonNull;
+
+import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
+import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 public class HangerMaize {
     //constants
@@ -11,8 +16,13 @@ public class HangerMaize {
     public static final double HANGERSPEED = .5;
     public static final int HANGERHIGHPOINT = 2500;
 
+    public static final double HANGERUP = 0.8;
+    public static final double HANGERDOWN = 0;
+    public static final double HANGERHANG = 0.4;
+
     //variables
     DcMotor hangerMotor = null;
+    Servo hangerServo = null;
     ///methods
 
 
@@ -23,13 +33,28 @@ public class HangerMaize {
         hangerMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         hangerMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         hangerMotor.setPower(0);
+        hangerServo = hwmap.get(Servo.class, "clawServo");
+        hangerautodown();
        // hangerMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         hangerautodown();
     }
 
+    public void handDown () {
+        hangerServo.setPosition(HANGERDOWN);
+    }
+    public void hangUp() {
+        hangerServo.setPosition(HANGERUP);
+
+    }
+
+    public void hangHangs() {
+        hangerServo.setPosition(HANGERHANG);
+
+    }
     //auto down
-    public void hangerautodown() {
+    public void hangerautodown()
+    {
 
         hangerMotor.setTargetPosition(HANGERLOWPOINT);
         hangerMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -70,5 +95,14 @@ public class HangerMaize {
 
 
     }
-
+    public class UpHanger implements Action {
+        public boolean loop(TelemetryPacket packet) {return false;}
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            hangerToPos(HANGERHIGHPOINT);
+            return false;}
+    }
+    public Action HangerUpAuto() {
+        return new UpHanger();
+    }
 }

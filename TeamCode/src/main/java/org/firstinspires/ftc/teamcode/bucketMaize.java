@@ -1,6 +1,10 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import androidx.annotation.NonNull;
+
+import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
+import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -26,6 +30,34 @@ bucketServo.setPosition(BUCKETCLOSED);
     }
     public void closedBucket() {
         bucketServo.setPosition(BUCKETCLOSED);
+    }
+
+
+
+
+
+    public class liftBucket implements Action {
+        public boolean loop(TelemetryPacket packet) {return false;}
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            openbucket();
+            return false;}
+    }
+    public Action DropBlock() {
+        return new liftBucket();
+    }
+
+
+
+    public class DownBucket implements Action {
+        public boolean loop(TelemetryPacket packet) {return false;}
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            closedBucket();
+            return false;}
+    }
+    public Action Rest() {
+        return new DownBucket();
     }
 
 
