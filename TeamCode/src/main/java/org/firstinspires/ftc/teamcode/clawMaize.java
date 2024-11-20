@@ -5,15 +5,14 @@ import androidx.annotation.NonNull;
 
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class clawMaize
 {
     //contants
-    public static final double CLAWCLOSED = 0.4;
-    public static final double CLAWOPENED = 0.3;
+    public static final double CLAWCLOSED = 0.7;
+    public static final double CLAWOPENED = 0.6;
 
     //variables
     Servo clawServo = null;

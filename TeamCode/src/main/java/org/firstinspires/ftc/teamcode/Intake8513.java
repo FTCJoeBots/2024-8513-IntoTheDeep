@@ -29,7 +29,7 @@ public class Intake8513 {
     Servo wristServo = null;
     NormalizedColorSensor colorSensor;
 
-    void init (HardwareMap hwmap){
+    public void init(HardwareMap hwmap){
        colorSensor = hwmap.get(NormalizedColorSensor.class, "ColorSensor");
        leftIntakeServo = hwmap.get(CRServo.class,"leftIntake");
        rightIntakeServo = hwmap.get(CRServo.class,"rightIntake");

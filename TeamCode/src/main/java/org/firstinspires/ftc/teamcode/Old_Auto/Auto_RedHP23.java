@@ -1,26 +1,31 @@
-package org.firstinspires.ftc.teamcode;
-import androidx.annotation.NonNull;
+package org.firstinspires.ftc.teamcode.Old_Auto;
 //very good auto
+
 import com.acmerobotics.dashboard.config.Config;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
-import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
-import com.acmerobotics.roadrunner.ParallelAction;
-import com.acmerobotics.roadrunner.SequentialAction;
-import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.Pose2d;
+import com.acmerobotics.roadrunner.SequentialAction;
 import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
+
+import org.firstinspires.ftc.teamcode.Intake8513;
+import org.firstinspires.ftc.teamcode.Lift;
+import org.firstinspires.ftc.teamcode.ConfigRR.MecanumDrive;
+import org.firstinspires.ftc.teamcode.bucketMaize;
+import org.firstinspires.ftc.teamcode.clawMaize;
+import org.firstinspires.ftc.teamcode.horizantalSlide;
 //yeah
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
+
 //keep going
 @Config
+@Disabled
 //Pratyush is better than Double A battery
-@Autonomous(name = "blueRight", group = "test")
-public class Auto extends LinearOpMode {
+@Autonomous(name = "RedHP23", group = "Red")
+public class Auto_RedHP23 extends LinearOpMode {
 //ride down the street
     @Override
     public void runOpMode() {
@@ -43,7 +48,7 @@ public class Auto extends LinearOpMode {
                 //.lineToX(6)
                 .strafeToConstantHeading(new Vector2d( 0, 15))
                 .strafeToConstantHeading(new Vector2d( -22, 15))
-                .strafeToConstantHeading(new Vector2d( -22.1, 21))
+                .strafeToConstantHeading(new Vector2d( -22.1, 20.2))
                 .build();
 
         Action clip = drive.actionBuilder(drive.pose)
@@ -51,22 +56,22 @@ public class Auto extends LinearOpMode {
                 .stopAndAdd(l.Pos2())
                 .waitSeconds(2)
                 .strafeToConstantHeading(new Vector2d( -15, 23.5))
-                .waitSeconds(1)
+                .waitSeconds(.7)
                 .stopAndAdd(l.Pos1())
-                .waitSeconds(1)
+                .waitSeconds(.2)
                 .stopAndAdd(c.ClawOpen())
-                .waitSeconds(1)
+                .waitSeconds(.1)
                 .strafeToConstantHeading(new Vector2d( -10, 19))
-                .waitSeconds(1)
+                .waitSeconds(.25)
                 .stopAndAdd(l.Pos0())
                 .build();
 
                 Action park = drive.actionBuilder(drive.pose)
                         .stopAndAdd(l.Pos0())
-                        .waitSeconds(0.5)
+                        .waitSeconds(0.3)
                         .strafeToConstantHeading(new Vector2d(-8,-12))
-                        .waitSeconds(0.5)
-                        .strafeToConstantHeading(new Vector2d(50,-38))
+                        .waitSeconds(0.3)
+                        .strafeToConstantHeading(new Vector2d(50,-35))
                         .build();
 
         while(!isStopRequested() && !opModeIsActive()) {// Init loop

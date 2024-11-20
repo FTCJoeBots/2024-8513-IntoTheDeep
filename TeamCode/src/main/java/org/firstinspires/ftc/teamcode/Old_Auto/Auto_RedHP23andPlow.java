@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Old_Auto;
 //very good auto
 
 import com.acmerobotics.dashboard.config.Config;
@@ -8,12 +8,21 @@ import com.acmerobotics.roadrunner.SequentialAction;
 import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
+import org.firstinspires.ftc.teamcode.Intake8513;
+import org.firstinspires.ftc.teamcode.Lift;
+import org.firstinspires.ftc.teamcode.ConfigRR.MecanumDrive;
+import org.firstinspires.ftc.teamcode.bucketMaize;
+import org.firstinspires.ftc.teamcode.clawMaize;
+import org.firstinspires.ftc.teamcode.horizantalSlide;
 //yeah
 
 
 //keep going
 @Config
+@Disabled
 //Pratyush is better than Double A battery
 @Autonomous(name = "RedHP23Plow", group = "Red")
 public class Auto_RedHP23andPlow extends LinearOpMode {

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Old_Auto;
 //very good auto
 
 import com.acmerobotics.dashboard.config.Config;
@@ -8,16 +8,25 @@ import com.acmerobotics.roadrunner.SequentialAction;
 import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
+import org.firstinspires.ftc.teamcode.Intake8513;
+import org.firstinspires.ftc.teamcode.Lift;
+import org.firstinspires.ftc.teamcode.ConfigRR.MecanumDrive;
+import org.firstinspires.ftc.teamcode.bucketMaize;
+import org.firstinspires.ftc.teamcode.clawMaize;
+import org.firstinspires.ftc.teamcode.horizantalSlide;
 //yeah
 
 
 //keep going
 @Config
+@Disabled
 //Pratyush is better than Double A battery
-@Autonomous(name = "BlueBucket23", group = "Blue")
-public class Auto_BlueBucket23 extends LinearOpMode {
-//ride down the street
+@Autonomous(name = "RedBucket23", group = "Red")
+public class Auto_RedBucket23 extends LinearOpMode {
+    //ride down the street
     @Override
     public void runOpMode() {
 //pose
@@ -58,17 +67,19 @@ public class Auto_BlueBucket23 extends LinearOpMode {
                 .stopAndAdd(l.Pos0())
                 .build();
 
-                Action park = drive.actionBuilder(drive.pose)
-                        .stopAndAdd(l.Pos0())
-                        .waitSeconds(0.5)
-                        .strafeToConstantHeading(new Vector2d(-38,-12))
-                        .waitSeconds(0.5)
-                        .strafeToConstantHeading(new Vector2d(-41,16))
-                        .waitSeconds(.3)
-                        .strafeToConstantHeading(new Vector2d(-29.9,18))
-                        .waitSeconds(.3)
+        Action park = drive.actionBuilder(drive.pose)
+                .stopAndAdd(l.Pos0())
+                .waitSeconds(0.5)
+                .strafeToConstantHeading(new Vector2d(-38,-12))
+                .waitSeconds(0.5)
+                .strafeToConstantHeading(new Vector2d(-41,16))
+                .waitSeconds(.3)
+                .strafeToConstantHeading(new Vector2d(-29.9,18))
+                .waitSeconds(.3)
+                /*.turn(Math.toRadians(-90))
+                .waitSeconds(.3)*/
 
-                        .build();
+                .build();
 
         while(!isStopRequested() && !opModeIsActive()) {// Init loop
 
@@ -78,7 +89,7 @@ public class Auto_BlueBucket23 extends LinearOpMode {
 
         Actions.runBlocking(new SequentialAction(
 
-              start,
+                start,
                 clip,
                 park
         ));

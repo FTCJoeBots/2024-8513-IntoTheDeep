@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Auto;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.Action;
@@ -9,9 +9,16 @@ import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.teamcode.ConfigRR.AutoMecanumDrive;
+import org.firstinspires.ftc.teamcode.Intake8513;
+import org.firstinspires.ftc.teamcode.Lift;
+import org.firstinspires.ftc.teamcode.bucketMaize;
+import org.firstinspires.ftc.teamcode.clawMaize;
+import org.firstinspires.ftc.teamcode.horizantalSlide;
+
 @Config
-@Autonomous(name = "AutoAfterLakeRedHP", group = "Red")
-public class TestAuto extends LinearOpMode {
+@Autonomous(name = "AutoAfterLakeRedHP", group = "Blue")
+public class AL_AutoBlueHP43 extends LinearOpMode {
     @Override
     public void runOpMode() {
 //pose
@@ -31,25 +38,22 @@ public class TestAuto extends LinearOpMode {
 //take action now
         Action start = drive.actionBuilder(drive.pose)
                 //.lineToX(6)
+                .stopAndAdd(l.Pos2())
                 .strafeToConstantHeading(new Vector2d( 0, 30))
                 .strafeToConstantHeading(new Vector2d( -8, 31))
-                .stopAndAdd(l.Pos2())
-                .waitSeconds(1)
                 .strafeToConstantHeading(new Vector2d( -15, 38))
                 .waitSeconds(0.2)
                 .build();
 
       Action clip1 = drive.actionBuilder(drive.pose)
-                .waitSeconds(0.3)
                 .stopAndAdd(l.Pos1())
-              .waitSeconds(0.4)
+              .waitSeconds(0.1)
               .stopAndAdd(c.ClawOpen())
                 .strafeToConstantHeading(new Vector2d( 0, -9))
                 .stopAndAdd(l.Pos0())
                 .build();
 
 Action plow = drive.actionBuilder(drive.pose)
-        .waitSeconds(0.2)
         .strafeToConstantHeading(new Vector2d(37, -5))
         .strafeToConstantHeading(new Vector2d(39,28))
         .turn(-1.6)
@@ -58,25 +62,39 @@ Action plow = drive.actionBuilder(drive.pose)
         .strafeToConstantHeading(new Vector2d(48,-10))
         .stopAndAdd(l.Pos3())
         .stopAndAdd(c.ClawOpen())
-        .waitSeconds(1.5)
+        .waitSeconds(1.1)
         .strafeToConstantHeading(new Vector2d(48,-40))
         .strafeToConstantHeading(new Vector2d(72.,-48))
-        .waitSeconds(.7)
+        .waitSeconds(.9)
         .stopAndAdd(c.CloseClaw())
+        .waitSeconds(0.05)
         .stopAndAdd(l.Pos1())
-        .waitSeconds(0.1)
-        .strafeToConstantHeading(new Vector2d(20,-43))
-        .strafeToConstantHeading(new Vector2d(24,-5))
-        .turn(1.3)
-        .stopAndAdd(l.Pos2())
-        .strafeToConstantHeading(new Vector2d(24,-3))
-        .stopAndAdd(l.Pos1())
-        .waitSeconds(0.8)
-        .stopAndAdd(c.ClawOpen())
-        .strafeToConstantHeading(new Vector2d(24,-20))
         .build();
 
 
+
+
+
+Action move = drive.actionBuilder(drive.pose)
+        .strafeToConstantHeading(new Vector2d(15,-62))
+        .turn(1.6)
+        .stopAndAdd(l.Pos2())
+        .build();
+
+
+        Action clip2 = drive.actionBuilder(drive.pose)
+                .strafeToConstantHeading(new Vector2d( -8, 30))
+                .stopAndAdd(l.Pos2())
+                .waitSeconds(0.1)
+                .build();
+
+        Action clip3 = drive.actionBuilder(drive.pose)
+                .stopAndAdd(l.Pos1())
+                .waitSeconds(0.1)
+                .stopAndAdd(c.ClawOpen())
+                .stopAndAdd(l.Pos0())
+                .strafeToConstantHeading(new Vector2d( 53, -40))
+                .build();
         while(!isStopRequested() && !opModeIsActive()) {// Init loop
 
         }
@@ -87,7 +105,10 @@ Action plow = drive.actionBuilder(drive.pose)
 
                 start,
                 clip1,
-                plow
+                plow,
+                move,
+                clip2,
+                clip3
         ));
 
         if (isStopRequested()) return;
