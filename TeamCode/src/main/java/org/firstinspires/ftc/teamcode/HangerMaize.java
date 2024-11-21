@@ -12,9 +12,9 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class HangerMaize {
     //constants
     public static final int HANGERLOWPOINT = 10;
-    public static final int HANGERHANGS = 800;
-    public static final double HANGERSPEED = .5;
-    public static final int HANGERHIGHPOINT = 2500;
+    public static final int HANGERHANGS = 2600;
+    public static final double HANGERSPEED = .7;
+    public static final int HANGERHIGHPOINT = 3801;
 
     public static final double HANGERUP = 0.8;
     public static final double HANGERDOWN = 0;

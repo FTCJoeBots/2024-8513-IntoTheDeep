@@ -2,9 +2,13 @@ package org.firstinspires.ftc.teamcode.Auto;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.Action;
+import com.acmerobotics.roadrunner.MinVelConstraint;
 import com.acmerobotics.roadrunner.Pose2d;
+import com.acmerobotics.roadrunner.ProfileAccelConstraint;
 import com.acmerobotics.roadrunner.SequentialAction;
+import com.acmerobotics.roadrunner.TranslationalVelConstraint;
 import com.acmerobotics.roadrunner.Vector2d;
+import com.acmerobotics.roadrunner.VelConstraint;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -17,7 +21,7 @@ import org.firstinspires.ftc.teamcode.clawMaize;
 import org.firstinspires.ftc.teamcode.horizantalSlide;
 
 @Config
-@Autonomous(name = "AutoAfterLakeRedHP", group = "Blue")
+@Autonomous(name = "AutoAfterLakeBlueHP", group = "Blue")
 public class AL_AutoBlueHP43 extends LinearOpMode {
     @Override
     public void runOpMode() {
@@ -40,61 +44,64 @@ public class AL_AutoBlueHP43 extends LinearOpMode {
                 //.lineToX(6)
                 .stopAndAdd(l.Pos2())
                 .strafeToConstantHeading(new Vector2d( 0, 30))
-                .strafeToConstantHeading(new Vector2d( -8, 31))
-                .strafeToConstantHeading(new Vector2d( -15, 38))
+                .strafeToConstantHeading(new Vector2d( -10.5, 31))
+                .strafeToConstantHeading(new Vector2d( -15, 37.5))
                 .waitSeconds(0.2)
                 .build();
 
-      Action clip1 = drive.actionBuilder(drive.pose)
+        Action clip1 = drive.actionBuilder(drive.pose)
                 .stopAndAdd(l.Pos1())
-              .waitSeconds(0.1)
-              .stopAndAdd(c.ClawOpen())
+                .waitSeconds(0.3)
+                .stopAndAdd(c.ClawOpen())
                 .strafeToConstantHeading(new Vector2d( 0, -9))
                 .stopAndAdd(l.Pos0())
                 .build();
 
-Action plow = drive.actionBuilder(drive.pose)
-        .strafeToConstantHeading(new Vector2d(37, -5))
-        .strafeToConstantHeading(new Vector2d(39,28))
-        .turn(-1.6)
-        .strafeToConstantHeading(new Vector2d(45,27))
-        .strafeToConstantHeading(new Vector2d(45.1,-30))
-        .strafeToConstantHeading(new Vector2d(48,-10))
-        .stopAndAdd(l.Pos3())
-        .stopAndAdd(c.ClawOpen())
-        .waitSeconds(1.1)
-        .strafeToConstantHeading(new Vector2d(48,-40))
-        .strafeToConstantHeading(new Vector2d(72.,-48))
-        .waitSeconds(.9)
-        .stopAndAdd(c.CloseClaw())
-        .waitSeconds(0.05)
-        .stopAndAdd(l.Pos1())
-        .build();
+        Action plow = drive.actionBuilder(drive.pose)
+                .strafeToConstantHeading(new Vector2d(37, -5))
+                .strafeToConstantHeading(new Vector2d(39,28))
+                .turn(-1.6)
+                .strafeToConstantHeading(new Vector2d(45,31))
+                .strafeToConstantHeading(new Vector2d(45.1,-28))
+                .strafeToConstantHeading(new Vector2d(48,-13))
+                .stopAndAdd(l.Pos3())
+                .stopAndAdd(c.ClawOpen())
+                .turn(-0.16)
+                .waitSeconds(1.2)
+                .strafeToConstantHeading(new Vector2d(48,-40))
+                .strafeToConstantHeading(new Vector2d(66,-48))
+                .waitSeconds(0.3)
+                .stopAndAdd(c.CloseClaw())
+                .waitSeconds(0.05)
+                .stopAndAdd(l.Pos1())
+                .build();
 
 
 
 
 
-Action move = drive.actionBuilder(drive.pose)
-        .strafeToConstantHeading(new Vector2d(15,-62))
-        .turn(1.6)
-        .stopAndAdd(l.Pos2())
-        .build();
+        Action move = drive.actionBuilder(drive.pose)
+                .strafeToConstantHeading(new Vector2d(15,-62))
+                .turn(1.6)
+                .stopAndAdd(l.Pos2())
+                .build();
 
 
         Action clip2 = drive.actionBuilder(drive.pose)
                 .strafeToConstantHeading(new Vector2d( -8, 30))
-                .stopAndAdd(l.Pos2())
-                .waitSeconds(0.1)
+                // .stopAndAdd(l.Pos2())
+                // .waitSeconds(0.1)
                 .build();
 
         Action clip3 = drive.actionBuilder(drive.pose)
                 .stopAndAdd(l.Pos1())
-                .waitSeconds(0.1)
+                .waitSeconds(0.3)
                 .stopAndAdd(c.ClawOpen())
                 .stopAndAdd(l.Pos0())
-                .strafeToConstantHeading(new Vector2d( 53, -40))
+                //.strafeToConstantHeading(new Vector2d( 53, -40))
+                .strafeToConstantHeading(new Vector2d( 53, -40), new TranslationalVelConstraint(750),new ProfileAccelConstraint(-10, 75))
                 .build();
+
         while(!isStopRequested() && !opModeIsActive()) {// Init loop
 
         }

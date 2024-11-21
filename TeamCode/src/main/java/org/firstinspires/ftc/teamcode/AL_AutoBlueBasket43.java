@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Auto;
+package org.firstinspires.ftc.teamcode;
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.Action;
 import com.acmerobotics.roadrunner.Pose2d;
@@ -9,16 +9,11 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.ConfigRR.AutoMecanumDrive;
-import org.firstinspires.ftc.teamcode.HangerMaize;
-import org.firstinspires.ftc.teamcode.Intake8513;
-import org.firstinspires.ftc.teamcode.Lift;
-import org.firstinspires.ftc.teamcode.bucketMaize;
-import org.firstinspires.ftc.teamcode.clawMaize;
-import org.firstinspires.ftc.teamcode.horizantalSlide;
+
 @Config
 
-@Autonomous(name = "AutoAfterLakeRedBasket", group = "Red")
-public class AL_AutoRedBasket43 extends LinearOpMode {
+@Autonomous(name = "AutoAfterLakeBlueBasket", group = "Blue")
+public class AL_AutoBlueBasket43 extends LinearOpMode {
     @Override
     public void runOpMode() {
 //Pose|Inits

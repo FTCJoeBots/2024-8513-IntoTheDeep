@@ -80,6 +80,17 @@ public class horizantalSlide {
        }
     }
 
+    public void horizontalSlideDirectSLOW(int position)
+    {
+        if ((position<MAXIMUMSLIDEPOSITION )&&(position>MINMIUMSLIDEPOSITION)) {
+
+            slideMotor.setTargetPosition(position);
+            slideMotor.setPower(0.6);
+
+
+        }
+    }
+
 
 
 
@@ -92,7 +103,7 @@ public class horizantalSlide {
         public boolean loop(TelemetryPacket packet) {return false;}
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
-            horizontalSlideDirect(300);
+            horizontalSlideDirect(450);
             return false;}
     }
     public Action Med() {
@@ -116,7 +127,7 @@ public class horizantalSlide {
         public boolean loop(TelemetryPacket packet) {return false;}
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
-            horizontalSlideDirect(950);
+            horizontalSlideDirectSLOW(1550);
             return false;}
     }
     public Action More() {
