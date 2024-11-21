@@ -236,6 +236,21 @@ if (gamepad2.left_stick_y<-.15) {
         }
 
 
+        if (gamepad2.a && !x_prev) {
+            if (!x_state) {
+                i.reverseintake();
+                x_state = true;
+                telemetry.addLine("Intake: ON REVERSE");
+                telemetry.update();
+            } else {
+                i.stopintake();
+                x_state = false;
+                telemetry.addLine("Intake: OFF");
+                telemetry.update();
+            }
+
+        }
+
 
             // telemetry.addData("distance",i.colorSensor.getDistance(DistanceUnit.CM));
         telemetry.addData("Lift position:",l.rightLiftMotor.getCurrentPosition());
