@@ -34,10 +34,11 @@ public class HangerMaize {
         hangerMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         hangerMotor.setPower(0);
         hangerServo = hwmap.get(Servo.class, "hangerServo");
+        hangerServo.setPosition(HANGERDOWN);
         hangerautodown();
        // hangerMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        hangerautodown();
+        handDown();
     }
 
     public void handDown () {

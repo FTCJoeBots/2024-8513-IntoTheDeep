@@ -133,7 +133,16 @@ public class horizantalSlide {
     public Action More() {
         return new MoreOUt();
     }
-
+    public class FarOut implements Action {
+        public boolean loop(TelemetryPacket packet) {return false;}
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            horizontalSlideDirectSLOW(2250);
+            return false;}
+    }
+    public Action Far() {
+        return new FarOut();
+    }
 
 
 

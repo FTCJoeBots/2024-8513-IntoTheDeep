@@ -15,10 +15,11 @@ import org.firstinspires.ftc.teamcode.Lift;
 import org.firstinspires.ftc.teamcode.bucketMaize;
 import org.firstinspires.ftc.teamcode.clawMaize;
 import org.firstinspires.ftc.teamcode.horizantalSlide;
+
 @Config
 
-@Autonomous(name = "AutoAfterLakeRedBasket", group = "Red")
-public class AL_AutoRedBasket43 extends LinearOpMode {
+@Autonomous(name = "AutoAfterLakeBlueBasket", group = "Blue")
+public class AL_AutoBlueBasket43 extends LinearOpMode {
     @Override
     public void runOpMode() {
 //Pose|Inits
@@ -45,20 +46,20 @@ public class AL_AutoRedBasket43 extends LinearOpMode {
                 //.strafeToConstantHeading(new Vector2d( 0, 30))
                 //.strafeToConstantHeading(new Vector2d( 10.5, 29))
                 .strafeToConstantHeading(new Vector2d( 24.9, 37.7))
-                .waitSeconds(0.5)
+                .waitSeconds(0.2)
                 .build();
 
       Action Block1 = drive.actionBuilder(drive.pose)
-              .waitSeconds(0.2)
-              .stopAndAdd(l.Pos1())
               .waitSeconds(0.1)
+              .stopAndAdd(l.Pos1())
+              .waitSeconds(0.15)
               .stopAndAdd(c.ClawOpen())
               .strafeToConstantHeading(new Vector2d( 0, -9))
               .stopAndAdd(l.Pos0())
               .build();
 
         Action Strafe = drive.actionBuilder(drive.pose)
-                .strafeToConstantHeading(new Vector2d( -47, 0))
+                .strafeToConstantHeading(new Vector2d( -47.4, 0))
                 .turn(Math.toRadians(-180))
                 .build();
 
@@ -67,36 +68,68 @@ public class AL_AutoRedBasket43 extends LinearOpMode {
                 .waitSeconds(0.9)
                 .stopAndAdd(i.Down())
                 .stopAndAdd(i.start())
-                .waitSeconds(1)
+                .waitSeconds(0.3)
                 .stopAndAdd(h.More())
                 .stopAndAdd(i.startInWithColorSensor())
-                .waitSeconds(1.3)
+                .waitSeconds(0.6)
                 .stopAndAdd(i.stop())
                 .stopAndAdd(i.Up())
+                .waitSeconds(0.4)
+                .stopAndAdd(h.Back())
                 .waitSeconds(1)
+                .stopAndAdd(i.reverse())
+                .build();
+
+        Action Intake2 = drive.actionBuilder(drive.pose)
+                .stopAndAdd(h.Med())
+                .waitSeconds(0.9)
+                .stopAndAdd(i.Down())
+                .stopAndAdd(i.start())
+                .waitSeconds(.3)
+                .stopAndAdd(h.Far())
+                .stopAndAdd(i.startInWithColorSensor())
+                .waitSeconds(.6)
+                .stopAndAdd(i.stop())
+                .stopAndAdd(i.Up())
+                .waitSeconds(0.4)
                 .stopAndAdd(h.Back())
                 .waitSeconds(1)
                 .stopAndAdd(i.reverse())
                 .build();
 
         Action Deposit = drive.actionBuilder(drive.pose)
-                .strafeToConstantHeading(new Vector2d( 20, 15.5))
-                .turn(Math.toRadians(-48))
-                .waitSeconds(1)
+                .strafeToConstantHeading(new Vector2d( 18.5, 12.6))
+                .turn(Math.toRadians(-49))
+                //.waitSeconds(0.3)
                 .stopAndAdd(l.Pos5())
-                .waitSeconds(1)
+                .waitSeconds(1.5)
                 .stopAndAdd(b.DropBlock())
                 .waitSeconds(1)
                 .stopAndAdd(b.Rest())
-                .waitSeconds(1)
-                .strafeToConstantHeading(new Vector2d( 0, -5))
+                .waitSeconds(0.5)
                 .stopAndAdd(l.Pos0())
+                .waitSeconds(0.9)
+                .build();
+
+        Action Deposit2 = drive.actionBuilder(drive.pose)
+                .waitSeconds(0.5)
+                .stopAndAdd(l.Pos5())
+                //.waitSeconds(1.5)
+                .strafeToConstantHeading(new Vector2d(-3,8))
+                .waitSeconds(0.3)
+                .turn(Math.toRadians(-49))
+                .waitSeconds(0.2)
+                .stopAndAdd(b.DropBlock())
                 .waitSeconds(1)
-                .turn(Math.toRadians(1))
+                .stopAndAdd(b.Rest())
+                .waitSeconds(0.5)
+                .stopAndAdd(l.Pos0())
+                .waitSeconds(0.8)
                 .build();
 
         Action Strafe2 = drive.actionBuilder(drive.pose)
-                .strafeToConstantHeading(new Vector2d( 6, 0))
+                .turn(Math.toRadians(45))
+                .strafeToConstantHeading(new Vector2d( 1.2, -5))
                 .build();
 
         Action GoToPark = drive.actionBuilder(drive.pose)
@@ -104,10 +137,10 @@ public class AL_AutoRedBasket43 extends LinearOpMode {
                 .turn(Math.toRadians(90))
                 .build();
 
-        Action Park = drive.actionBuilder(drive.pose)
+      /*  Action Park = drive.actionBuilder(drive.pose)
                 .strafeToConstantHeading(new Vector2d(20,10))
                 .stopAndAdd(H.HangerUpAuto())
-                .build();
+                .build();*/
 
         while(!isStopRequested() && !opModeIsActive()) {}
         waitForStart();
@@ -119,11 +152,10 @@ public class AL_AutoRedBasket43 extends LinearOpMode {
                 Strafe,
                 Intake,
                 Deposit,
-              //  Strafe2,
-                Intake,
-                Deposit //add comma
-              //  GoToPark,
-              //  Park
+                Strafe2,
+                Intake2,
+                Deposit2//,
+               // GoToPark
 
         ));
         if (isStopRequested()) return;}}

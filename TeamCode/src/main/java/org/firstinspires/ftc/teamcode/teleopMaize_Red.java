@@ -23,6 +23,8 @@ public class teleopMaize_Red extends OpMode {
     boolean x_prev = false;
     boolean lb_state=false;
     boolean lb_prev = false;
+    boolean a2_prev = false;
+    boolean a2_state = false;
     boolean a_prev = false;
     boolean a_state = false;
     public double MAXSPEED = .75;
@@ -132,6 +134,16 @@ telemetry.update();
         }
         lb_prev=gamepad2.left_bumper;
 
+
+
+
+
+        if (gamepad2.b) {
+                H.hangUp();
+        }
+
+
+
         if (gamepad2.right_bumper && !rb_prev) {
             if (!rb_state) {
                 i.intakeUp();
@@ -231,6 +243,7 @@ if (gamepad2.left_stick_y<-.15) {
         if (gamepad2.right_stick_y>.15) {
           l.liftmanualdown();
         }
+
         if (gamepad2.right_stick_y<-.15) {
             l.liftmanualup();
         }
