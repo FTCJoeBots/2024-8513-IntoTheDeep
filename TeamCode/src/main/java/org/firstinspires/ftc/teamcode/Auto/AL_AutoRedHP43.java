@@ -44,7 +44,7 @@ public class AL_AutoRedHP43 extends LinearOpMode {
                 //.lineToX(6)
                 .stopAndAdd(l.Pos2())
                 .strafeToConstantHeading(new Vector2d( 0, 30))
-                .strafeToConstantHeading(new Vector2d( -10.5, 31))
+                .strafeToConstantHeading(new Vector2d( -10.5, 32))
                 .strafeToConstantHeading(new Vector2d( -15, 37.5))
                 .waitSeconds(0.2)
                 .build();

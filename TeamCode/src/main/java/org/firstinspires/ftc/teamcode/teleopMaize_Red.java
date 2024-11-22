@@ -103,7 +103,7 @@ telemetry.update();
         d.driveMecanum(forward,rotate,strafe);
 
 
-        if (gamepad1.a && !a_prev) {
+        if (gamepad1.b && !a_prev) {
             if(!a_state) {
                 MAXSPEED = 0.3;
                 a_state = true;
