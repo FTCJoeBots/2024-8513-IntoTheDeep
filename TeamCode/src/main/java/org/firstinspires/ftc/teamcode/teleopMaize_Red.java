@@ -138,7 +138,7 @@ telemetry.update();
 
 
 
-        if (gamepad2.b) {
+        if (gamepad1.a) {
                 H.hangUp();
         }
 
