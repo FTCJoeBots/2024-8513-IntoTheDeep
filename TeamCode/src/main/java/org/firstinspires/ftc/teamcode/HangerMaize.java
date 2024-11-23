@@ -17,7 +17,7 @@ public class HangerMaize {
     public static final int HANGERHIGHPOINT = 3801;
 
     public static final double HANGERUP = 0.00001;
-    public static final double HANGERDOWN = 0.75;
+    public static final double HANGERDOWN = 0.98;
     public static final double HANGERHANG = 1;//all the way left
 
     //variables

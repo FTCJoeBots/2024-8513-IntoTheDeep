@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.ConfigRR.TeleOpMecanum;
 
 
-@TeleOp(name="TeleOp Maize | RED ")
+@TeleOp(name="TeleOp Maize | Red ")
 
 
 public class teleopMaize_Red extends OpMode {

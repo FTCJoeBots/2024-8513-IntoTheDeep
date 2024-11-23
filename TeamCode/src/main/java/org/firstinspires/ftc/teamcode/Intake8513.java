@@ -163,6 +163,9 @@ Blue is 210 to 270    3
 
     public Action startInWithColorSensor() {
         return new startInColorSensor();
+        if (hsvValues()){
+
+        }
     }
 
 
@@ -187,6 +190,16 @@ Blue is 210 to 270    3
     }
     public Action reverse() {
         return new reverseIn();
+    }
+    public class goingUp implements Action {
+        public boolean loop(TelemetryPacket packet) {return false;}
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            intakeUp();
+            return false;}
+    }
+    public Action goUp() {
+       return new goingUp();
     }
 
 

@@ -19,7 +19,7 @@ import org.firstinspires.ftc.teamcode.horizantalSlide;
 @Config
 
 @Autonomous(name = "AutoAfterLakeRedBasket", group = "Red")
-public class AL_AutoRedBasket43ForRP extends LinearOpMode {
+public class AL_AutoRedBasket43 extends LinearOpMode {
     @Override
     public void runOpMode() {
 //Pose|Inits
@@ -49,17 +49,17 @@ public class AL_AutoRedBasket43ForRP extends LinearOpMode {
                 .waitSeconds(0.2)
                 .build();
 
-      Action Block1 = drive.actionBuilder(drive.pose)
-              .waitSeconds(0.1)
-              .stopAndAdd(l.Pos1())
-              .waitSeconds(0.15)
-              .stopAndAdd(c.ClawOpen())
-              .strafeToConstantHeading(new Vector2d( 0, -9))
-              .stopAndAdd(l.Pos0())
-              .build();
+        Action Block1 = drive.actionBuilder(drive.pose)
+                .waitSeconds(0.1)
+                .stopAndAdd(l.Pos1())
+                .waitSeconds(0.15)
+                .stopAndAdd(c.ClawOpen())
+                .strafeToConstantHeading(new Vector2d( 0, -9))
+                .stopAndAdd(l.Pos0())
+                .build();
 
         Action Strafe = drive.actionBuilder(drive.pose)
-                .strafeToConstantHeading(new Vector2d( -47.4, 0))
+                .strafeToConstantHeading(new Vector2d( -47.8, 0.8))
                 .turn(Math.toRadians(-180))
                 .build();
 
@@ -70,7 +70,7 @@ public class AL_AutoRedBasket43ForRP extends LinearOpMode {
                 .stopAndAdd(i.start())
                 .waitSeconds(0.3)
                 .stopAndAdd(h.More())
-                .stopAndAdd(i.startInWithColorSensor())
+                .stopAndAdd(i.startInWithColorSensor()) .afterTime(3, i.goUp())
                 .waitSeconds(0.6)
                 .stopAndAdd(i.stop())
                 .stopAndAdd(i.Up())
@@ -80,6 +80,9 @@ public class AL_AutoRedBasket43ForRP extends LinearOpMode {
                 .stopAndAdd(i.reverse())
                 .build();
 
+        Action Retract = drive.actionBuilder(drive.pose)
+                .stopAndAdd(i.goUp())
+                .build();
         Action Intake2 = drive.actionBuilder(drive.pose)
                 .stopAndAdd(h.Med())
                 .waitSeconds(0.9)
@@ -102,7 +105,7 @@ public class AL_AutoRedBasket43ForRP extends LinearOpMode {
                 .turn(Math.toRadians(-49))
                 //.waitSeconds(0.3)
                 .stopAndAdd(l.Pos5())
-                .waitSeconds(1.5)
+                .waitSeconds(1.3)
                 .stopAndAdd(b.DropBlock())
                 .waitSeconds(1)
                 .stopAndAdd(b.Rest())
@@ -115,7 +118,7 @@ public class AL_AutoRedBasket43ForRP extends LinearOpMode {
                 .waitSeconds(0.5)
                 .stopAndAdd(l.Pos5())
                 //.waitSeconds(1.5)
-                .strafeToConstantHeading(new Vector2d(-3,8))
+                .strafeToConstantHeading(new Vector2d(-1.8,8))
                 .waitSeconds(0.3)
                 .turn(Math.toRadians(-49))
                 .waitSeconds(0.2)
@@ -129,7 +132,7 @@ public class AL_AutoRedBasket43ForRP extends LinearOpMode {
 
         Action Strafe2 = drive.actionBuilder(drive.pose)
                 .turn(Math.toRadians(45))
-                .strafeToConstantHeading(new Vector2d( 1.2, -5))
+                .strafeToConstantHeading(new Vector2d( 0.8, -8.5))
                 .build();
 
         Action GoToPark = drive.actionBuilder(drive.pose)
@@ -155,7 +158,7 @@ public class AL_AutoRedBasket43ForRP extends LinearOpMode {
                 Strafe2,
                 Intake2,
                 Deposit2//,
-               // GoToPark
+                // GoToPark
 
         ));
         if (isStopRequested()) return;}}

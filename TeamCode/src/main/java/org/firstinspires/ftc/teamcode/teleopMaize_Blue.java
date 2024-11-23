@@ -2,14 +2,15 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+
 import org.firstinspires.ftc.teamcode.ConfigRR.TeleOpMecanum;
 
 
-@TeleOp(name="TeleOp Maize | BLUE ")
+@TeleOp(name="TeleOp Maize | Blues ")
 
 
 public class teleopMaize_Blue extends OpMode {
-    boolean WHICHTEAM=true;   //0 is red,1 is blue
+    boolean WHICHTEAM=false;   //0 is red,1 is blue
     double forward=0;
     double strafe=0;
     double rotate=0;
@@ -22,6 +23,8 @@ public class teleopMaize_Blue extends OpMode {
     boolean x_prev = false;
     boolean lb_state=false;
     boolean lb_prev = false;
+    boolean a2_prev = false;
+    boolean a2_state = false;
     boolean a_prev = false;
     boolean a_state = false;
     public double MAXSPEED = .75;
@@ -44,8 +47,8 @@ public class teleopMaize_Blue extends OpMode {
         l.init(hardwareMap);
         b.init(hardwareMap);
         c.init(hardwareMap);
-telemetry.addLine("init complete");
-telemetry.update();
+        telemetry.addLine("init complete");
+        telemetry.update();
     }
 
     @Override
@@ -57,7 +60,7 @@ telemetry.update();
         //*****Refactor this to an enumerated variable for readability
 
         //Sample
-       // telemetry.addData("GetSampleColor:",i.hsvValues[0]);
+        // telemetry.addData("GetSampleColor:",i.hsvValues[0]);
         if(i.getSampleColor()>0 && !rb_state){
             i.stopintake();
             //get rid of it if we have a red and we're the blue team
@@ -100,7 +103,7 @@ telemetry.update();
         d.driveMecanum(forward,rotate,strafe);
 
 
-        if (gamepad1.a && !a_prev) {
+        if (gamepad1.b && !a_prev) {
             if(!a_state) {
                 MAXSPEED = 0.3;
                 a_state = true;
@@ -112,12 +115,12 @@ telemetry.update();
 
         }
 
-       if (gamepad1.right_bumper) {
+        if (gamepad1.right_bumper) {
             H.hangerautoup();
         }
-       if (gamepad1.left_bumper) {
-           H.hangerautodown();
-       }
+        if (gamepad1.left_bumper) {
+            H.hangerautodown();
+        }
 
         if (gamepad2.left_bumper && !lb_prev) {
             if (!lb_state) {
@@ -131,6 +134,16 @@ telemetry.update();
         }
         lb_prev=gamepad2.left_bumper;
 
+
+
+
+
+        if (gamepad1.a) {
+            H.hangUp();
+        }
+
+
+
         if (gamepad2.right_bumper && !rb_prev) {
             if (!rb_state) {
                 i.intakeUp();
@@ -139,7 +152,7 @@ telemetry.update();
             } else {
                 i.intakeDown();
                 rb_state = false;
-               // i.startintake();
+                // i.startintake();
             }
 
         }
@@ -182,16 +195,16 @@ telemetry.update();
         if (gamepad2.left_stick_button) {
 
 
-        h.horizontalSlideDirect(21);
+            h.horizontalSlideDirect(21);
         }
 //automatically puts wrist up
-if (h.returnEncoderPosition() < 150){
+        if (h.returnEncoderPosition() < 150){
 
-    i.intakeUp();
-    rb_state = true;
+            i.intakeUp();
+            rb_state = true;
 
 
-}
+        }
 
 
 
@@ -220,23 +233,39 @@ if (h.returnEncoderPosition() < 150){
 
 
         //manual intake sliders
-if (gamepad2.left_stick_y<-.15) {
-    h.horizontalSlideManualOut();
-}
+        if (gamepad2.left_stick_y<-.15) {
+            h.horizontalSlideManualOut();
+        }
         if (gamepad2.left_stick_y>.15) {
             h.horizontalSlideManualIn();
         }
 
         if (gamepad2.right_stick_y>.15) {
-          l.liftmanualdown();
+            l.liftmanualdown();
         }
+
         if (gamepad2.right_stick_y<-.15) {
             l.liftmanualup();
         }
 
 
+        if (gamepad2.a && !x_prev) {
+            if (!x_state) {
+                i.reverseintake();
+                x_state = true;
+                telemetry.addLine("Intake: ON REVERSE");
+                telemetry.update();
+            } else {
+                i.stopintake();
+                x_state = false;
+                telemetry.addLine("Intake: OFF");
+                telemetry.update();
+            }
 
-            // telemetry.addData("distance",i.colorSensor.getDistance(DistanceUnit.CM));
+        }
+
+
+        // telemetry.addData("distance",i.colorSensor.getDistance(DistanceUnit.CM));
         telemetry.addData("Lift position:",l.rightLiftMotor.getCurrentPosition());
         telemetry.addData("Slide position:",h.slideMotor.getCurrentPosition());
         telemetry.addData("left stick:",gamepad2.left_stick_y);

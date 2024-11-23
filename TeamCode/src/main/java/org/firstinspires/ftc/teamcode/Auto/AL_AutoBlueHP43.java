@@ -44,8 +44,8 @@ public class AL_AutoBlueHP43 extends LinearOpMode {
                 //.lineToX(6)
                 .stopAndAdd(l.Pos2())
                 .strafeToConstantHeading(new Vector2d( 0, 30))
-                .strafeToConstantHeading(new Vector2d( -10.5, 31))
-                .strafeToConstantHeading(new Vector2d( -15, 37.5))
+                .strafeToConstantHeading(new Vector2d( -10.5, 32))
+                .strafeToConstantHeading(new Vector2d( -15, 39))
                 .waitSeconds(0.2)
                 .build();
 
@@ -61,9 +61,9 @@ public class AL_AutoBlueHP43 extends LinearOpMode {
                 .strafeToConstantHeading(new Vector2d(37, -5))
                 .strafeToConstantHeading(new Vector2d(39,28))
                 .turn(-1.6)
-                .strafeToConstantHeading(new Vector2d(45,31))
+                .strafeToConstantHeading(new Vector2d(47,31))
                 .strafeToConstantHeading(new Vector2d(45.1,-28))
-                .strafeToConstantHeading(new Vector2d(48,-13))
+                .strafeToConstantHeading(new Vector2d(48,-11))
                 .stopAndAdd(l.Pos3())
                 .stopAndAdd(c.ClawOpen())
                 .turn(-0.16)

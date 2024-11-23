@@ -137,7 +137,7 @@ public class horizantalSlide {
         public boolean loop(TelemetryPacket packet) {return false;}
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
-            horizontalSlideDirectSLOW(2250);
+            horizontalSlideDirectSLOW(2300);
             return false;}
     }
     public Action Far() {
