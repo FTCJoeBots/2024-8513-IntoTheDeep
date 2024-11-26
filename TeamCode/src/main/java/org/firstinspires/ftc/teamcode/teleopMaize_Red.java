@@ -125,6 +125,7 @@ telemetry.update();
         if (gamepad2.left_bumper && !lb_prev) {
             if (!lb_state) {
                 c.openClaw();
+                l.liftToPos(150);
                 lb_state = true;
             } else {
                 c.closedClaw();
