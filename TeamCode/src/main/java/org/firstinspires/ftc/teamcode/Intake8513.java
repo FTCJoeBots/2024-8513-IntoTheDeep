@@ -163,9 +163,6 @@ Blue is 210 to 270    3
 
     public Action startInWithColorSensor() {
         return new startInColorSensor();
-        if (hsvValues()){
-
-        }
     }
 
 

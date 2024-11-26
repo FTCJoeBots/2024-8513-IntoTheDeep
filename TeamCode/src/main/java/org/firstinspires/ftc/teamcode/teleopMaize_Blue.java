@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.ConfigRR.TeleOpMecanum;
 
 
 public class teleopMaize_Blue extends OpMode {
-    boolean WHICHTEAM=false;   //0 is red,1 is blue
+    boolean WHICHTEAM=true;   //0 is red,1 is blue
     double forward=0;
     double strafe=0;
     double rotate=0;
