@@ -51,6 +51,7 @@ import com.qualcomm.robotcore.hardware.VoltageSensor;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 import org.firstinspires.ftc.teamcode.Drawing;
+import org.firstinspires.ftc.teamcode.Lift;
 import org.firstinspires.ftc.teamcode.messages.DriveCommandMessage;
 import org.firstinspires.ftc.teamcode.messages.MecanumCommandMessage;
 import org.firstinspires.ftc.teamcode.messages.MecanumLocalizerInputsMessage;
@@ -498,4 +499,17 @@ public final class AutoMecanumDriveTestStrafe {
                 defaultVelConstraint, defaultAccelConstraint
         );
     }
+
+
+    public Action StrafeCHeadTest(double x, double y) {
+        return actionBuilder(pose)
+                .strafeToConstantHeading(new Vector2d(x,y))
+                .build();
+    }
+    public Action SplineCHeadTest(double x, double y, double z) {
+        return actionBuilder(pose)
+                .splineToConstantHeading(new Vector2d(x,y), Math.toRadians(z))
+                .build();
+    }
+
 }

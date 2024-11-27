@@ -45,7 +45,6 @@ public class AL_AutoRedHP43WithSpline extends LinearOpMode {
                 //.strafeToConstantHeading(new Vector2d( -10.5, 32))
                 //.strafeToConstantHeading(new Vector2d( -15, 39))
                 //.waitSeconds(0.2)
-                .splineToConstantHeading(new Vector2d(-12, 10), 1.6)
                 .splineToConstantHeading(new Vector2d(-13,39), 1.6)
                 .build();
 
@@ -53,27 +52,31 @@ public class AL_AutoRedHP43WithSpline extends LinearOpMode {
                 .stopAndAdd(l.Pos1())
               .waitSeconds(0.3)
               .stopAndAdd(c.ClawOpen())
-                .splineToConstantHeading(new Vector2d( 0, -9),1.6)
+                .splineToConstantHeading(new Vector2d( 0, -5),1.6)
                 .stopAndAdd(l.Pos0())
                 .build();
 
 Action plow = drive.actionBuilder(drive.pose)
-        .splineToConstantHeading(new Vector2d(37, -10),1.6)
-        .splineToConstantHeading(new Vector2d(39, 28),1.6)
-        .turn(-1.6)
-        .splineToConstantHeading(new Vector2d(47, 25),1.6)
-        .splineToConstantHeading(new Vector2d(45.1, -20),1.6)
-        .splineToConstantHeading(new Vector2d(48, -11),1.6)
-     /*   .stopAndAdd(l.Pos3())
+        .splineToConstantHeading(new Vector2d(33, -2),1.6)
+        .splineToSplineHeading(new Pose2d(new Vector2d(30, 30), Math.toRadians(-180)),1.6)
+        //start to push first block into HP
+        .strafeToConstantHeading(new Vector2d(43, 25))
+        .strafeToConstantHeading(new Vector2d(46, -24))
+        //Finishing pushng first block into HP and starting second
+        .splineToSplineHeading(new Pose2d(new Vector2d(45, 29), Math.toRadians(-198)),1.6)
+        .splineToConstantHeading(new Vector2d( 45, 40),1.6)
+        .strafeToConstantHeading(new Vector2d(49, -24))
+        .strafeToConstantHeading(new Vector2d(50, -15))
+        //Finishing pushng second block into HP
+        .stopAndAdd(l.Pos3())
         .stopAndAdd(c.ClawOpen())
-        .turn(-0.16)
         .waitSeconds(1.2)
-        .splineToConstantHeading(new Vector2d(48, -40),1.6)
-        .splineToConstantHeading(new Vector2d(66, -48),1.6)
+        .strafeTo(new Vector2d(48, -40))
+        .strafeTo(new Vector2d(66, -48))
         .waitSeconds(0.3)
         .stopAndAdd(c.CloseClaw())
         .waitSeconds(0.05)
-        .stopAndAdd(l.Pos1())*/
+        .stopAndAdd(l.Pos1())
         .build();
 
 
@@ -98,6 +101,7 @@ Action move = drive.actionBuilder(drive.pose)
                 .waitSeconds(0.3)
                 .stopAndAdd(c.ClawOpen())
                 .stopAndAdd(l.Pos0())
+
                 //.strafeToConstantHeading(new Vector2d( 53, -40))
                 .strafeToConstantHeading(new Vector2d( 53, -40), new TranslationalVelConstraint(750),new ProfileAccelConstraint(-10, 75))
                 .build();
@@ -113,7 +117,7 @@ Action move = drive.actionBuilder(drive.pose)
                 start,
                 clip1,
                 plow
-                //move,
+                //move
                 //clip2,
                 //clip3
         ));
