@@ -61,12 +61,13 @@ Action plow = drive.actionBuilder(drive.pose)
         .splineToSplineHeading(new Pose2d(new Vector2d(30, 30), Math.toRadians(-180)),1.6)
         //start to push first block into HP
         .strafeToConstantHeading(new Vector2d(43, 25))
-        .strafeToConstantHeading(new Vector2d(46, -24))
+        .strafeToConstantHeading(new Vector2d(46, -20))
         //Finishing pushng first block into HP and starting second
         .splineToSplineHeading(new Pose2d(new Vector2d(45, 29), Math.toRadians(-198)),1.6)
-        .splineToConstantHeading(new Vector2d( 45, 40),1.6)
-        .strafeToConstantHeading(new Vector2d(49, -24))
-        .strafeToConstantHeading(new Vector2d(50, -15))
+       // .splineToConstantHeading(new Vector2d( 52, 29),1.6)
+        .strafeToConstantHeading(new Vector2d(55, 34))
+        .strafeToConstantHeading(new Vector2d(53, -20))
+        .strafeToConstantHeading(new Vector2d(53, -15))
         //Finishing pushng second block into HP
         .stopAndAdd(l.Pos3())
         .stopAndAdd(c.ClawOpen())
