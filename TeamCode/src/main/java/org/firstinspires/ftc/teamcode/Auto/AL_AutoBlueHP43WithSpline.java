@@ -19,8 +19,8 @@ import org.firstinspires.ftc.teamcode.clawMaize;
 import org.firstinspires.ftc.teamcode.horizantalSlide;
 
 @Config
-@Autonomous(name = "AutoAfterColomaRedHP", group = "Red")
-public class AL_AutoRedHP43WithSpline extends LinearOpMode {
+@Autonomous(name = "AutoAfterColomaBlueHP", group = "Blue")
+public class AL_AutoBlueHP43WithSpline extends LinearOpMode {
     @Override
     public void runOpMode() {
 //pose
@@ -45,7 +45,7 @@ public class AL_AutoRedHP43WithSpline extends LinearOpMode {
                 //.strafeToConstantHeading(new Vector2d( -10.5, 32))
                 //.strafeToConstantHeading(new Vector2d( -15, 39))
                 //.waitSeconds(0.2)
-                .splineToConstantHeading(new Vector2d(-13,33), 1.6)
+                .splineToConstantHeading(new Vector2d(-13,34), 1.6)
                 .build();
 
       Action clip1 = drive.actionBuilder(drive.pose)
@@ -66,8 +66,8 @@ Action plow = drive.actionBuilder(drive.pose)
         .splineToSplineHeading(new Pose2d(new Vector2d(45, 29), Math.toRadians(-190)),1.6)
        // .splineToConstantHeading(new Vector2d( 52, 29),1.6)
         .strafeToConstantHeading(new Vector2d(50, 34))
-        .splineToSplineHeading(new Pose2d(new Vector2d(48, -20), Math.toRadians(-190)),1.6)
-        .strafeToConstantHeading(new Vector2d(49, -5))
+        .splineToSplineHeading(new Pose2d(new Vector2d(50, -20), Math.toRadians(-185)),1.6)
+        .strafeToConstantHeading(new Vector2d(55, -11))
         //Finishing pushng second block into HP
         .stopAndAdd(l.Pos3())
         .stopAndAdd(c.ClawOpen())

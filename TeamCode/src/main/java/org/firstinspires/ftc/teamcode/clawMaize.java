@@ -8,12 +8,10 @@ import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class clawMaize
-{
+public class clawMaize {
     //contants
     public static final double CLAWCLOSED = 0.75;
-    public static final double CLAWOPENED = 0.6;
-
+    public static final double CLAWOPENED = 0.3;
     //variables
     Servo clawServo = null;
 

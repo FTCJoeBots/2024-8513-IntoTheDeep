@@ -26,6 +26,7 @@ public class horizantalSlide {
          slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
          slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
          slideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+         slideMotor.setTargetPosition(0);
          slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         /* slideMotor.setTargetPosition(INITIALSLIDEPOSITION);
          slideMotor.setPower(HORIZONTIALSLIDESPEED);*/

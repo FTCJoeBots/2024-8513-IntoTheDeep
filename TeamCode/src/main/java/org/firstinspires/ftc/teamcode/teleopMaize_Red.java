@@ -135,14 +135,17 @@ telemetry.update();
         }
         lb_prev=gamepad2.left_bumper;
 
-
-
-
-
-        if (gamepad1.a) {
+        if (gamepad1.a && !a2_prev) {
+            if (!a2_state) {
                 H.hangUp();
-        }
+                a2_state = true;
+            } else {
+                H.handDown();
+                a2_state = false;
+            }
 
+        }
+        a2_prev=gamepad1.a;
 
 
         if (gamepad2.right_bumper && !rb_prev) {
