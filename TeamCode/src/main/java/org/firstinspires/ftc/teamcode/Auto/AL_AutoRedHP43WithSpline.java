@@ -63,12 +63,13 @@ Action plow = drive.actionBuilder(drive.pose)
         .strafeToConstantHeading(new Vector2d(41.5, 25))
         .strafeToConstantHeading(new Vector2d(43, -20))
         //Finishing pushng first block into HP and starting second
-        .splineToSplineHeading(new Pose2d(new Vector2d(45, 29), Math.toRadians(-190)),1.6)
+        .splineToSplineHeading(new Pose2d(new Vector2d(45, 32), Math.toRadians(-190)),1.6)
        // .splineToConstantHeading(new Vector2d( 52, 29),1.6)
-        .strafeToConstantHeading(new Vector2d(50, 34))
-        .splineToSplineHeading(new Pose2d(new Vector2d(48, -20), Math.toRadians(-190)),1.6)
+        .strafeToConstantHeading(new Vector2d(48, 32))
+        .splineToSplineHeading(new Pose2d(new Vector2d(48, -20), Math.toRadians(-195)),1.6)
         .strafeToConstantHeading(new Vector2d(49, -5))
         //Finishing pushng second block into HP
+        .waitSeconds(0.2)
         .stopAndAdd(l.Pos3())
         .stopAndAdd(c.ClawOpen())
         .waitSeconds(1.2)
@@ -78,6 +79,12 @@ Action plow = drive.actionBuilder(drive.pose)
         .stopAndAdd(c.CloseClaw())
         .waitSeconds(0.05)
         .stopAndAdd(l.Pos1())
+        .build();
+
+
+Action twoclips = drive.actionBuilder(drive.pose)
+        .splineToSplineHeading(new Pose2d(new Vector2d(15, -62), Math.toRadians(20)),1.6)
+        .stopAndAdd(l.Pos2())
         .build();
 
 
@@ -117,7 +124,8 @@ Action move = drive.actionBuilder(drive.pose)
 
                 start,
                 clip1,
-                plow
+                plow,
+                twoclips
                 //move
                 //clip2,
                 //clip3

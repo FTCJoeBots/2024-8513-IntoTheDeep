@@ -122,18 +122,16 @@ telemetry.update();
            H.hangerautodown();
        }
 
-        if (gamepad2.left_bumper && !lb_prev) {
-            if (!lb_state) {
-                c.openClaw();
+
+        if (gamepad2.b) {
+            c.openClaw();
                 l.liftToPos(150);
-                lb_state = true;
-            } else {
-                c.closedClaw();
-                lb_state = false;
-            }
+
+        }else {
+            c.closedClaw();
 
         }
-        lb_prev=gamepad2.left_bumper;
+
 
         if (gamepad1.a && !a2_prev) {
             if (!a2_state) {

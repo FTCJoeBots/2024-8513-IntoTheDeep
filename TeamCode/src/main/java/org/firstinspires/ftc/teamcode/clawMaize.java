@@ -10,8 +10,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class clawMaize {
     //contants
-    public static final double CLAWCLOSED = 0.75;
-    public static final double CLAWOPENED = 0.3;
+    public static final double CLAWCLOSED = 0.1;
+    public static final double CLAWOPENED = 0.004;
     //variables
     Servo clawServo = null;
 
@@ -21,7 +21,7 @@ public class clawMaize {
         //rightLiftMotor = hwmap.get(DcMotor.class,"rightLiftMotor");
 
         clawServo=hwmap.get(Servo.class, "clawServo");
-        closedClaw();
+        clawServo.setPosition(CLAWCLOSED);
     }
 
     //methods
@@ -31,6 +31,8 @@ public class clawMaize {
     public void closedClaw() {
         clawServo.setPosition(CLAWCLOSED);
     }
+
+
     public class OpenClaw implements Action {
         public boolean loop(TelemetryPacket packet) {return false;}
         @Override

@@ -6,11 +6,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.ConfigRR.TeleOpMecanum;
 
 
-@TeleOp(name="TeleOp Maize | Blues ")
+@TeleOp(name="TeleOp Maize | Blue")
 
 
 public class teleopMaize_Blue extends OpMode {
-    boolean WHICHTEAM=true;   //0 is red,1 is blue
+    boolean WHICHTEAM=false;   //0 is red,1 is blue
     double forward=0;
     double strafe=0;
     double rotate=0;
@@ -122,26 +122,28 @@ public class teleopMaize_Blue extends OpMode {
             H.hangerautodown();
         }
 
-        if (gamepad2.left_bumper && !lb_prev) {
-            if (!lb_state) {
-                c.openClaw();
-                lb_state = true;
+
+        if (gamepad2.b) {
+            c.openClaw();
+            l.liftToPos(150);
+
+        }else {
+            c.closedClaw();
+
+        }
+
+
+        if (gamepad1.a && !a2_prev) {
+            if (!a2_state) {
+                H.hangUp();
+                a2_state = true;
             } else {
-                c.closedClaw();
-                lb_state = false;
+                H.handDown();
+                a2_state = false;
             }
 
         }
-        lb_prev=gamepad2.left_bumper;
-
-
-
-
-
-        if (gamepad1.a) {
-            H.hangUp();
-        }
-
+        a2_prev=gamepad1.a;
 
 
         if (gamepad2.right_bumper && !rb_prev) {
