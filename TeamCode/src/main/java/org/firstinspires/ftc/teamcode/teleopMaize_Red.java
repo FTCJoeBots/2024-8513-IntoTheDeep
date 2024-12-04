@@ -123,10 +123,10 @@ telemetry.update();
        }
 
 
-        if (gamepad2.b) {
+        if (gamepad2.left_bumper) {
             c.openClaw();
                 l.liftToPos(150);
-
+gamepad1.rumble(0001);
         }else {
             c.closedClaw();
 
