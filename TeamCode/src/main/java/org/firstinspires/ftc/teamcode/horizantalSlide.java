@@ -13,8 +13,8 @@ public class horizantalSlide {
      public static final int MINMIUMSLIDEPOSITION = 20;
     public static final int INITIALSLIDEPOSITION = 350;
      public static final int MAXIMUMSLIDEPOSITION = 2325;
-     public static final double HORIZONTIALSLIDESPEED = .9;
-    public static int MANUALSLIDEINCREMENT = 95;
+     public static final double HORIZONTIALSLIDESPEED = 1;
+    public static int MANUALSLIDEINCREMENT = 97;
     public static double MANUALSLIDEINCREMENT2 = 95;
 
 
