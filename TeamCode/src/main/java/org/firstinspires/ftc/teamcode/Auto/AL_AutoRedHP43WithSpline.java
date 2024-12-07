@@ -81,13 +81,13 @@ Action plow = drive.actionBuilder(drive.pose)
                 .strafeToConstantHeading(new Vector2d(20,33))
                 .waitSeconds(0.1)
         .stopAndAdd(c.CloseClaw())
-        .waitSeconds(0.05)
+        .waitSeconds(0.025)
         .stopAndAdd(l.Pos1())
         .build();
 
 
 Action twoclips = drive.actionBuilder(drive.pose)
-        .splineTo(new Pose2d(new Vector2d(37, -20), Math.toRadians(0)).component1(),1.6)
+        .splineTo(new Pose2d(new Vector2d(40, -20), Math.toRadians(0)).component1(),1.6)
         .stopAndAdd(l.Pos2())
         .strafeToConstantHeading(new Vector2d(36,-35))
         .stopAndAdd(l.Pos1())

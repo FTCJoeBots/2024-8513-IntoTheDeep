@@ -93,7 +93,7 @@ Action twoclips = drive.actionBuilder(drive.pose)
         .splineToSplineHeading(new Pose2d(new Vector2d(-4, 6), Math.toRadians(265)),1.6)
         .waitSeconds(0.1)
         .stopAndAdd(l.Pos1())
-        .waitSeconds(0.075)
+        .waitSeconds(0.025)
         .stopAndAdd(c.CloseClaw())
         .build();
 

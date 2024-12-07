@@ -46,7 +46,6 @@ public class AL_AutoRedBasket43 extends LinearOpMode {
                 //.strafeToConstantHeading(new Vector2d( 0, 30))
                 //.strafeToConstantHeading(new Vector2d( 10.5, 29))
                 .strafeToConstantHeading(new Vector2d( 24.9, 37.7))
-                .waitSeconds(0.2)
                 .build();
 
         Action Block1 = drive.actionBuilder(drive.pose)
@@ -59,8 +58,8 @@ public class AL_AutoRedBasket43 extends LinearOpMode {
                 .build();
 
         Action Strafe = drive.actionBuilder(drive.pose)
-                .strafeToConstantHeading(new Vector2d( -47.8, 0.8))
-                .turn(Math.toRadians(-180))
+                .strafeToConstantHeading(new Vector2d( -48.3, -8))
+                .turn(Math.toRadians(-176))
                 .build();
 
         Action Intake = drive.actionBuilder(drive.pose)
@@ -102,24 +101,24 @@ public class AL_AutoRedBasket43 extends LinearOpMode {
                 .build();
 
         Action Deposit = drive.actionBuilder(drive.pose)
-                .strafeToConstantHeading(new Vector2d( 18.5, 12.6))
+                .strafeToConstantHeading(new Vector2d( 17.2, 16))
                 .turn(Math.toRadians(-49))
                 //.waitSeconds(0.3)
                 .stopAndAdd(l.Pos5())
-                .waitSeconds(1.3)
+                .waitSeconds(1.2)
                 .stopAndAdd(b.DropBlock())
                 .waitSeconds(1)
                 .stopAndAdd(b.Rest())
                 .waitSeconds(0.5)
                 .stopAndAdd(l.Pos0())
-                .waitSeconds(0.9)
+                .waitSeconds(0.7)
                 .build();
 
         Action Deposit2 = drive.actionBuilder(drive.pose)
-                .waitSeconds(0.5)
+                .waitSeconds(0.3)
                 .stopAndAdd(l.Pos5())
                 //.waitSeconds(1.5)
-                .strafeToConstantHeading(new Vector2d(-1.8,8))
+                .strafeToConstantHeading(new Vector2d(-1.8,5))
                 .waitSeconds(0.3)
                 .turn(Math.toRadians(-49))
                 .waitSeconds(0.2)
@@ -133,7 +132,7 @@ public class AL_AutoRedBasket43 extends LinearOpMode {
 
         Action Strafe2 = drive.actionBuilder(drive.pose)
                 .turn(Math.toRadians(45))
-                .strafeToConstantHeading(new Vector2d( 0.8, -8.5))
+                .strafeToConstantHeading(new Vector2d( 5, -4))
                 .build();
 
         Action GoToPark = drive.actionBuilder(drive.pose)
