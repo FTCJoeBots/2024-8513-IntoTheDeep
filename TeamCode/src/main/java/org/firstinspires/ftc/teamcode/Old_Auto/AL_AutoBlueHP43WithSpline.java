@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Auto;
+package org.firstinspires.ftc.teamcode.Old_Auto;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.Action;
@@ -9,6 +9,7 @@ import com.acmerobotics.roadrunner.TranslationalVelConstraint;
 import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.ConfigRR.AutoMecanumDrive;
@@ -17,10 +18,10 @@ import org.firstinspires.ftc.teamcode.Lift;
 import org.firstinspires.ftc.teamcode.bucketMaize;
 import org.firstinspires.ftc.teamcode.clawMaize;
 import org.firstinspires.ftc.teamcode.horizantalSlide;
-
+@Disabled
 @Config
-@Autonomous(name = "AutoAfterColomaRedHP", group = "Red")
-public class AL_AutoRedHP43WithSpline extends LinearOpMode {
+@Autonomous(name = "AutoAfterColomaBlueHP", group = "Blue")
+public class AL_AutoBlueHP43WithSpline extends LinearOpMode {
     @Override
     public void runOpMode() {
 //pose
@@ -48,70 +49,70 @@ public class AL_AutoRedHP43WithSpline extends LinearOpMode {
                 .splineToConstantHeading(new Vector2d(-13,33), 1.6)
                 .build();
 
-      Action clip1 = drive.actionBuilder(drive.pose)
+        Action clip1 = drive.actionBuilder(drive.pose)
                 .stopAndAdd(l.Pos1())
-              .waitSeconds(0.3)
-              .stopAndAdd(c.ClawOpen())
+                .waitSeconds(0.3)
+                .stopAndAdd(c.ClawOpen())
                 .splineToConstantHeading(new Vector2d( 0, -5),1.6)
                 .stopAndAdd(l.Pos0())
                 .build();
 
-Action plow = drive.actionBuilder(drive.pose)
-        .splineToConstantHeading(new Vector2d(33, -2),1.6)
-        .splineToSplineHeading(new Pose2d(new Vector2d(30, 30), Math.toRadians(-180)),1.6)
-        //start to push first block into HP
-        .strafeToConstantHeading(new Vector2d(41.5, 25))
-        .strafeToConstantHeading(new Vector2d(43, -20))
-        //Finishing pushng first block into HP and starting second
-        .splineToSplineHeading(new Pose2d(new Vector2d(45, 32), Math.toRadians(-190)),1.6)
-       // .splineToConstantHeading(new Vector2d( 52, 29),1.6)
-        .strafeToConstantHeading(new Vector2d(48, 32))
-        .splineToSplineHeading(new Pose2d(new Vector2d(48, -20), Math.toRadians(-195)),1.6)
-        .strafeToConstantHeading(new Vector2d(49, -5))
-        //Finishing pushng second block into HP
-        .waitSeconds(0.1)
-        .turnTo(1.2)
-        .build();
+        Action plow = drive.actionBuilder(drive.pose)
+                .splineToConstantHeading(new Vector2d(33, -2),1.6)
+                .splineToSplineHeading(new Pose2d(new Vector2d(30, 30), Math.toRadians(-180)),1.6)
+                //start to push first block into HP
+                .strafeToConstantHeading(new Vector2d(41.5, 25))
+                .strafeToConstantHeading(new Vector2d(43, -20))
+                //Finishing pushng first block into HP and starting second
+                .splineToSplineHeading(new Pose2d(new Vector2d(45, 32), Math.toRadians(-190)),1.6)
+                // .splineToConstantHeading(new Vector2d( 52, 29),1.6)
+                .strafeToConstantHeading(new Vector2d(48, 32))
+                .splineToSplineHeading(new Pose2d(new Vector2d(48, -20), Math.toRadians(-195)),1.6)
+                .strafeToConstantHeading(new Vector2d(49, -5))
+                //Finishing pushng second block into HP
+                .waitSeconds(0.1)
+                .turnTo(1.2)
+                .build();
 
         Action clippickup = drive.actionBuilder(drive.pose)
-        .stopAndAdd(l.Pos3())
-        .stopAndAdd(c.ClawOpen())
-        .waitSeconds(0.3)
-        .strafeToConstantHeading(new Vector2d(20,0))
+                .stopAndAdd(l.Pos3())
+                .stopAndAdd(c.ClawOpen())
+                .waitSeconds(0.3)
+                .strafeToConstantHeading(new Vector2d(20,0))
                 .strafeToConstantHeading(new Vector2d(20,33))
                 .waitSeconds(0.1)
-        .stopAndAdd(c.CloseClaw())
-        .waitSeconds(0.025)
-        .stopAndAdd(l.Pos1())
-        .build();
+                .stopAndAdd(c.CloseClaw())
+                .waitSeconds(0.05)
+                .stopAndAdd(l.Pos1())
+                .build();
 
 
-Action twoclips = drive.actionBuilder(drive.pose)
-        .splineTo(new Pose2d(new Vector2d(40, -20), Math.toRadians(0)).component1(),1.6)
-        .stopAndAdd(l.Pos2())
-        .strafeToConstantHeading(new Vector2d(36,-35))
-        .stopAndAdd(l.Pos1())
-        .waitSeconds(0.1)
-        .stopAndAdd(c.ClawOpen())
-        .stopAndAdd(l.Pos0())
-        .splineToConstantHeading(new Vector2d( -83, 8),.5)
-        .build();
+        Action twoclips = drive.actionBuilder(drive.pose)
+                .splineTo(new Pose2d(new Vector2d(37, -20), Math.toRadians(0)).component1(),1.6)
+                .stopAndAdd(l.Pos2())
+                .strafeToConstantHeading(new Vector2d(36,-35))
+                .stopAndAdd(l.Pos1())
+                .waitSeconds(0.1)
+                .stopAndAdd(c.ClawOpen())
+                .stopAndAdd(l.Pos0())
+                .splineToConstantHeading(new Vector2d( -83, 8),.5)
+                .build();
 
 
 
 
 
-Action move = drive.actionBuilder(drive.pose)
-        .strafeToConstantHeading(new Vector2d(15,-62))
-        .turn(1.6)
-        .stopAndAdd(l.Pos2())
-        .build();
+        Action move = drive.actionBuilder(drive.pose)
+                .strafeToConstantHeading(new Vector2d(15,-62))
+                .turn(1.6)
+                .stopAndAdd(l.Pos2())
+                .build();
 
 
         Action clip2 = drive.actionBuilder(drive.pose)
                 .strafeToConstantHeading(new Vector2d( -8, 30))
-               // .stopAndAdd(l.Pos2())
-               // .waitSeconds(0.1)
+                // .stopAndAdd(l.Pos2())
+                // .waitSeconds(0.1)
                 .build();
 
         Action clip3 = drive.actionBuilder(drive.pose)

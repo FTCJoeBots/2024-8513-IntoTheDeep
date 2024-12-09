@@ -19,8 +19,8 @@ import org.firstinspires.ftc.teamcode.clawMaize;
 import org.firstinspires.ftc.teamcode.horizantalSlide;
 
 @Config
-@Autonomous(name = "AL_AutoRedHP63WithSplineTwoClips", group = "Red")
-public class AL_AutoRedHP63WithSplineTwoClips extends LinearOpMode {
+@Autonomous(name = "AutoAfterColomaHP", group = "Red")
+public class AL_AutoHP43WithSpline extends LinearOpMode {
     @Override
     public void runOpMode() {
 //pose
@@ -45,7 +45,7 @@ public class AL_AutoRedHP63WithSplineTwoClips extends LinearOpMode {
                 //.strafeToConstantHeading(new Vector2d( -10.5, 32))
                 //.strafeToConstantHeading(new Vector2d( -15, 39))
                 //.waitSeconds(0.2)
-                .splineToConstantHeading(new Vector2d(-13,33.5), 1.6)
+                .splineToConstantHeading(new Vector2d(-13,33), 1.6)
                 .build();
 
       Action clip1 = drive.actionBuilder(drive.pose)
@@ -63,8 +63,11 @@ Action plow = drive.actionBuilder(drive.pose)
         .strafeToConstantHeading(new Vector2d(41.5, 25))
         .strafeToConstantHeading(new Vector2d(43, -20))
         //Finishing pushng first block into HP and starting second
-        .splineToSplineHeading(new Pose2d(new Vector2d(45, -12), Math.toRadians(-190)),1.6)
+        .splineToSplineHeading(new Pose2d(new Vector2d(45, 32), Math.toRadians(-190)),1.6)
        // .splineToConstantHeading(new Vector2d( 52, 29),1.6)
+        .strafeToConstantHeading(new Vector2d(48, 32))
+        .splineToSplineHeading(new Pose2d(new Vector2d(48, -20), Math.toRadians(-195)),1.6)
+        .strafeToConstantHeading(new Vector2d(49, -5))
         //Finishing pushng second block into HP
         .waitSeconds(0.1)
         .turnTo(1.2)
@@ -74,41 +77,25 @@ Action plow = drive.actionBuilder(drive.pose)
         .stopAndAdd(l.Pos3())
         .stopAndAdd(c.ClawOpen())
         .waitSeconds(0.3)
-                .strafeToConstantHeading(new Vector2d(3,33))
+        .strafeToConstantHeading(new Vector2d(20,0))
+                .strafeToConstantHeading(new Vector2d(20,33))
                 .waitSeconds(0.1)
         .stopAndAdd(c.CloseClaw())
-        .waitSeconds(0.05)
+        .waitSeconds(0.025)
         .stopAndAdd(l.Pos1())
         .build();
 
 
 Action twoclips = drive.actionBuilder(drive.pose)
-        .splineTo(new Pose2d(new Vector2d(44, -20), Math.toRadians(0)).component1(),1.6)
+        .splineTo(new Pose2d(new Vector2d(40, -20), Math.toRadians(0)).component1(),1.6)
         .stopAndAdd(l.Pos2())
         .strafeToConstantHeading(new Vector2d(36,-35))
         .stopAndAdd(l.Pos1())
         .waitSeconds(0.1)
         .stopAndAdd(c.ClawOpen())
         .stopAndAdd(l.Pos0())
-        .splineToSplineHeading(new Pose2d(new Vector2d(-4, 6), Math.toRadians(265)),1.6)
-        .waitSeconds(0.1)
-        .stopAndAdd(l.Pos1())
-        .waitSeconds(0.025)
-        .stopAndAdd(c.CloseClaw())
+        .splineToConstantHeading(new Vector2d( -83, 8),.5)
         .build();
-
-
-        Action cliptwice = drive.actionBuilder(drive.pose)
-        .splineTo(new Pose2d(new Vector2d(43, -18), Math.toRadians(0)).component1(),1.6)
-        .stopAndAdd(l.Pos2())
-        .strafeToConstantHeading(new Vector2d(43,-35))
-        .stopAndAdd(l.Pos1())
-        .waitSeconds(0.3)
-        .stopAndAdd(c.ClawOpen())
-        .stopAndAdd(l.Pos0())
-                .splineTo(new Pose2d(new Vector2d(0, 0), Math.toRadians(0)).component1(),1.6)
-
-                .build();
 
 
 
@@ -134,7 +121,7 @@ Action move = drive.actionBuilder(drive.pose)
                 .stopAndAdd(l.Pos0())
 
                 //.strafeToConstantHeading(new Vector2d( 53, -40))
-               // .strafeToConstantHeading(new Vector2d( 53, -40), new TranslationalVelConstraint(750),new ProfileAccelConstraint(-10, 75))
+                .strafeToConstantHeading(new Vector2d( 53, -40), new TranslationalVelConstraint(750),new ProfileAccelConstraint(-10, 75))
                 .build();
 
         while(!isStopRequested() && !opModeIsActive()) {// Init loop
@@ -149,8 +136,7 @@ Action move = drive.actionBuilder(drive.pose)
                 clip1,
                 plow,
                 clippickup,
-                twoclips,
-                cliptwice
+                twoclips
                 //move
                 //clip2,
                 //clip3

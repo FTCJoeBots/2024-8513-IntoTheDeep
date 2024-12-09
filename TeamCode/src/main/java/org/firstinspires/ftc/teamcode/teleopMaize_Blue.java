@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.ConfigRR.TeleOpMecanum;
 
 
-@TeleOp(name="TeleOp Maize | Blue")
+@TeleOp(name="TeleOp Maize | Blue ")
 
 
 public class teleopMaize_Blue extends OpMode {
@@ -125,8 +125,6 @@ public class teleopMaize_Blue extends OpMode {
 
         if (gamepad2.left_bumper) {
             c.openClaw();
-            l.liftToPos(150);
-gamepad1.rumble(0001);
         }else {
             c.closedClaw();
 
@@ -248,6 +246,22 @@ gamepad1.rumble(0001);
 
         if (gamepad2.right_stick_y<-.15) {
             l.liftmanualup();
+        }
+
+
+        if (gamepad2.a && !x_prev) {
+            if (!x_state) {
+                i.reverseintake();
+                x_state = true;
+                telemetry.addLine("Intake: ON REVERSE");
+                telemetry.update();
+            } else {
+                i.stopintake();
+                x_state = false;
+                telemetry.addLine("Intake: OFF");
+                telemetry.update();
+            }
+
         }
 
 

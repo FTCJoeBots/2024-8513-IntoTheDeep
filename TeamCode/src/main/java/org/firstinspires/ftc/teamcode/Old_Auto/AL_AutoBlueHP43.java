@@ -1,16 +1,15 @@
-package org.firstinspires.ftc.teamcode.Auto;
+package org.firstinspires.ftc.teamcode.Old_Auto;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.Action;
-import com.acmerobotics.roadrunner.MinVelConstraint;
 import com.acmerobotics.roadrunner.Pose2d;
 import com.acmerobotics.roadrunner.ProfileAccelConstraint;
 import com.acmerobotics.roadrunner.SequentialAction;
 import com.acmerobotics.roadrunner.TranslationalVelConstraint;
 import com.acmerobotics.roadrunner.Vector2d;
-import com.acmerobotics.roadrunner.VelConstraint;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.ConfigRR.AutoMecanumDrive;
@@ -19,10 +18,10 @@ import org.firstinspires.ftc.teamcode.Lift;
 import org.firstinspires.ftc.teamcode.bucketMaize;
 import org.firstinspires.ftc.teamcode.clawMaize;
 import org.firstinspires.ftc.teamcode.horizantalSlide;
-
+@Disabled
 @Config
-@Autonomous(name = "AutoAfterLakeRedHP", group = "Red")
-public class AL_AutoRedHP43 extends LinearOpMode {
+@Autonomous(name = "AutoAfterLakeBlueHP", group = "Blue")
+public class AL_AutoBlueHP43 extends LinearOpMode {
     @Override
     public void runOpMode() {
 //pose
@@ -49,48 +48,48 @@ public class AL_AutoRedHP43 extends LinearOpMode {
                 .waitSeconds(0.2)
                 .build();
 
-      Action clip1 = drive.actionBuilder(drive.pose)
+        Action clip1 = drive.actionBuilder(drive.pose)
                 .stopAndAdd(l.Pos1())
-              .waitSeconds(0.3)
-              .stopAndAdd(c.ClawOpen())
+                .waitSeconds(0.3)
+                .stopAndAdd(c.ClawOpen())
                 .strafeToConstantHeading(new Vector2d( 0, -9))
                 .stopAndAdd(l.Pos0())
                 .build();
 
-Action plow = drive.actionBuilder(drive.pose)
-        .strafeToConstantHeading(new Vector2d(37, -5))
-        .strafeToConstantHeading(new Vector2d(39,28))
-        .turn(-1.6)
-        .strafeToConstantHeading(new Vector2d(47,31))
-        .strafeToConstantHeading(new Vector2d(45.1,-28))
-        .strafeToConstantHeading(new Vector2d(48,-11))
-        .stopAndAdd(l.Pos3())
-        .stopAndAdd(c.ClawOpen())
-        .turn(-0.16)
-        .waitSeconds(1.2)
-        .strafeToConstantHeading(new Vector2d(48,-40))
-        .strafeToConstantHeading(new Vector2d(66,-48))
-        .waitSeconds(0.3)
-        .stopAndAdd(c.CloseClaw())
-        .waitSeconds(0.05)
-        .stopAndAdd(l.Pos1())
-        .build();
+        Action plow = drive.actionBuilder(drive.pose)
+                .strafeToConstantHeading(new Vector2d(37, -5))
+                .strafeToConstantHeading(new Vector2d(39,28))
+                .turn(-1.6)
+                .strafeToConstantHeading(new Vector2d(47,31))
+                .strafeToConstantHeading(new Vector2d(45.1,-28))
+                .strafeToConstantHeading(new Vector2d(48,-11))
+                .stopAndAdd(l.Pos3())
+                .stopAndAdd(c.ClawOpen())
+                .turn(-0.16)
+                .waitSeconds(1.2)
+                .strafeToConstantHeading(new Vector2d(48,-40))
+                .strafeToConstantHeading(new Vector2d(66,-48))
+                .waitSeconds(0.3)
+                .stopAndAdd(c.CloseClaw())
+                .waitSeconds(0.05)
+                .stopAndAdd(l.Pos1())
+                .build();
 
 
 
 
 
-Action move = drive.actionBuilder(drive.pose)
-        .strafeToConstantHeading(new Vector2d(15,-62))
-        .turn(1.6)
-        .stopAndAdd(l.Pos2())
-        .build();
+        Action move = drive.actionBuilder(drive.pose)
+                .strafeToConstantHeading(new Vector2d(15,-62))
+                .turn(1.6)
+                .stopAndAdd(l.Pos2())
+                .build();
 
 
         Action clip2 = drive.actionBuilder(drive.pose)
                 .strafeToConstantHeading(new Vector2d( -8, 30))
-               // .stopAndAdd(l.Pos2())
-               // .waitSeconds(0.1)
+                // .stopAndAdd(l.Pos2())
+                // .waitSeconds(0.1)
                 .build();
 
         Action clip3 = drive.actionBuilder(drive.pose)

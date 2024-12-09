@@ -10,8 +10,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class clawMaize {
     //contants
-    public static final double CLAWCLOSED = 0.1;
-    public static final double CLAWOPENED = 0.004;
+    public static final double CLAWCLOSED = 0.8;
+    public static final double CLAWOPENED = 0.45;
     //variables
     Servo clawServo = null;
 
