@@ -37,6 +37,7 @@ public final class TwoDeadWheelLocalizer implements Localizer {
     private int lastParPos, lastPerpPos;
     private Rotation2d lastHeading;
 
+
     private final double inPerTick;
 
     private double lastRawHeadingVel, headingVelOffset;

@@ -20,6 +20,7 @@ public class HangerMaize {
     public static final double HANGERDOWN =0.15;
     public static final double HANGERHANG = 1;//all the way left
 
+
     //variables
     DcMotor hangerMotor = null;
     Servo hangerServo = null;

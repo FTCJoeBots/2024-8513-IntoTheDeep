@@ -481,6 +481,7 @@ public final class AutoMecanumDrive {
         c.setStrokeWidth(1);
         c.setStroke("#3F51B5");
         c.strokePolyline(xPoints, yPoints);
+
     }
 
     public TrajectoryActionBuilder actionBuilder(Pose2d beginPose) {

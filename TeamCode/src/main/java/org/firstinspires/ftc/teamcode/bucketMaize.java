@@ -17,6 +17,7 @@ public class bucketMaize
     //variables
     Servo bucketServo;
 
+
     //init
     public void init (HardwareMap hwmap) {
         //get the servo from the controlhub

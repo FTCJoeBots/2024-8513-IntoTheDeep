@@ -20,6 +20,7 @@ public class Lift {
     public static final int LIFTLOWBUCKET = 1865;
     public static final int LIFTDownSome = 1590;
 
+
     //variables
     DcMotor rightLiftMotor = null;
 

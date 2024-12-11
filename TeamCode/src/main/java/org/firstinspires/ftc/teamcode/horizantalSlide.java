@@ -18,6 +18,7 @@ public class horizantalSlide {
     public static double MANUALSLIDEINCREMENT2 = 95;
 
 
+
     DcMotor slideMotor = null;
      public void init (HardwareMap hwmap) {
          slideMotor = hwmap.get(DcMotor.class,"slidemotor");
