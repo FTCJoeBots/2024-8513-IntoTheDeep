@@ -18,8 +18,8 @@ import org.firstinspires.ftc.teamcode.horizantalSlide;
 
 @Config
 
-@Autonomous(name = "AL_AutoBasketWithSpline", group = "Red")
-public class AL_AutoBasketWithSpline extends LinearOpMode {
+@Autonomous(name = "AL_AutoBasketStartWithSample48", group = "Red")
+public class AL_AutoBasketStartWithSample48 extends LinearOpMode {
     @Override
     public void runOpMode() {
 //Pose|Inits
@@ -40,26 +40,26 @@ public class AL_AutoBasketWithSpline extends LinearOpMode {
         h.init(hardwareMap);
 
         Action Start = drive.actionBuilder(drive.pose)
-                .stopAndAdd(l.Pos2())
+                //.lineToX(6)
+                //.lineToX(6)
                 //.strafeToConstantHeading(new Vector2d( 0, 30))
-                //.strafeToConstantHeading(new Vector2d( -10.5, 32))
-                //.strafeToConstantHeading(new Vector2d( -15, 39))
-                //.waitSeconds(0.2)
-                .splineToConstantHeading(new Vector2d(13,33.5), 1.6)
+                //.strafeToConstantHeading(new Vector2d( 10.5, 29))
+                .strafeToConstantHeading(new Vector2d( 0, -9))
+                .strafeToConstantHeading(new Vector2d( 30, -9))
                 .build();
 
-        Action Block1 = drive.actionBuilder(drive.pose)
+        Action idk = drive.actionBuilder(drive.pose)
                 .waitSeconds(0.1)
                 .stopAndAdd(l.Pos1())
                 .waitSeconds(0.15)
                 .stopAndAdd(c.ClawOpen())
-                .splineToConstantHeading(new Vector2d( 0, -9),1.6)
+                .strafeToConstantHeading(new Vector2d( 0, -9))
                 .stopAndAdd(l.Pos0())
                 .build();
 
         Action Strafe = drive.actionBuilder(drive.pose)
-                .splineToConstantHeading(new Vector2d( -47.2, -7.4),1.6)
-                .turn(Math.toRadians(-176))
+                .turn(Math.toRadians(50))
+                .strafeToConstantHeading(new Vector2d(-18, -28))
                 .build();
 
         Action Intake = drive.actionBuilder(drive.pose)
@@ -100,8 +100,8 @@ public class AL_AutoBasketWithSpline extends LinearOpMode {
                 .stopAndAdd(i.reverse())
                 .build();
 
-        Action Deposit = drive.actionBuilder(drive.pose)
-                .strafeToConstantHeading(new Vector2d( 17.2, 16))
+        Action Sample1 = drive.actionBuilder(drive.pose)
+                //.strafeToConstantHeading(new Vector2d( 17.2, 16))
                 .turn(Math.toRadians(-49))
                 //.waitSeconds(0.3)
                 .stopAndAdd(l.Pos5())
@@ -114,11 +114,30 @@ public class AL_AutoBasketWithSpline extends LinearOpMode {
                 .waitSeconds(0.7)
                 .build();
 
+
+
+        Action Deposit = drive.actionBuilder(drive.pose)
+                //.strafeToConstantHeading(new Vector2d( 17.2, 16))
+                .turn(Math.toRadians(-49))
+                //.waitSeconds(0.3)
+                .stopAndAdd(l.Pos5())
+                .waitSeconds(1.2)
+                .stopAndAdd(b.DropBlock())
+                .waitSeconds(1)
+                .stopAndAdd(b.Rest())
+                .waitSeconds(0.5)
+                .stopAndAdd(l.Pos0())
+                .waitSeconds(0.7)
+                .build();
+
+
+
+
         Action Deposit2 = drive.actionBuilder(drive.pose)
                 .waitSeconds(0.5)
                 .stopAndAdd(l.Pos5())
                 //.waitSeconds(1.5)
-                .strafeToConstantHeading(new Vector2d(-1.8,5))
+                .strafeToConstantHeading(new Vector2d(3,8))
                 .waitSeconds(0.3)
                 .turn(Math.toRadians(-49))
                 .waitSeconds(0.2)
@@ -151,9 +170,10 @@ public class AL_AutoBasketWithSpline extends LinearOpMode {
         Actions.runBlocking(new SequentialAction(
 
                 Start,
-                Block1,
+                Sample1,
                 Strafe,
                 Intake,
+                Retract,
                 Deposit,
                 Strafe2,
                 Intake2,

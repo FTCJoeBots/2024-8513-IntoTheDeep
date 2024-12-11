@@ -119,7 +119,6 @@ Action move = drive.actionBuilder(drive.pose)
                 .waitSeconds(0.3)
                 .stopAndAdd(c.ClawOpen())
                 .stopAndAdd(l.Pos0())
-
                 //.strafeToConstantHeading(new Vector2d( 53, -40))
                 .strafeToConstantHeading(new Vector2d( 53, -40), new TranslationalVelConstraint(750),new ProfileAccelConstraint(-10, 75))
                 .build();
