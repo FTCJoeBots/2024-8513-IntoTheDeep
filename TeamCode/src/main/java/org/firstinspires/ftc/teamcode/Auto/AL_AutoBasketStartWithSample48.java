@@ -58,8 +58,7 @@ public class AL_AutoBasketStartWithSample48 extends LinearOpMode {
                 .build();
 
         Action Strafe = drive.actionBuilder(drive.pose)
-                .turn(Math.toRadians(50))
-                .strafeToConstantHeading(new Vector2d(-18, -28))
+                .strafeToConstantHeading(new Vector2d(10, 0))
                 .build();
 
         Action Intake = drive.actionBuilder(drive.pose)
@@ -112,6 +111,7 @@ public class AL_AutoBasketStartWithSample48 extends LinearOpMode {
                 .waitSeconds(0.5)
                 .stopAndAdd(l.Pos0())
                 .waitSeconds(0.7)
+                .turn(Math.toRadians(50))
                 .build();
 
 
