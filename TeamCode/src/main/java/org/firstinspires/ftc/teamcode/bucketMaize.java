@@ -11,8 +11,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class bucketMaize
 {
     //contants
-    public static final double BUCKETCLOSED = 0;
-    public static final double BUCKETOPENED = 0.91;
+    public static final double BUCKETCLOSED = 0.15;
+    public static final double BUCKETOPENED = 0.9;
 
     //variables
     Servo bucketServo;

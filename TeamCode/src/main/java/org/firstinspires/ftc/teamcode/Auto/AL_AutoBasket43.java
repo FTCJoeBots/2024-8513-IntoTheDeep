@@ -118,7 +118,7 @@ public class AL_AutoBasket43 extends LinearOpMode {
                 .waitSeconds(0.5)
                 .stopAndAdd(l.Pos5())
                 //.waitSeconds(1.5)
-                .strafeToConstantHeading(new Vector2d(-1.8,5))
+                .strafeToConstantHeading(new Vector2d(3,8))
                 .waitSeconds(0.3)
                 .turn(Math.toRadians(-49))
                 .waitSeconds(0.2)
