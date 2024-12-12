@@ -118,7 +118,7 @@ public class AL_AutoBasketStartWithSample48 extends LinearOpMode {
 
 
         Action Deposit = drive.actionBuilder(drive.pose)
-                .strafeToConstantHeading(new Vector2d( 17.2, 16))
+                .strafeToConstantHeading(new Vector2d( 17.2, 13.6))
                 .turn(Math.toRadians(-49))
                 //.waitSeconds(0.3)
                 .stopAndAdd(l.Pos5())
@@ -138,7 +138,7 @@ public class AL_AutoBasketStartWithSample48 extends LinearOpMode {
                 .waitSeconds(0.3)
                 .stopAndAdd(l.Pos5())
                 //.waitSeconds(1.5)
-                .strafeToConstantHeading(new Vector2d(3,8))
+                .strafeToConstantHeading(new Vector2d(3,7))
                 .waitSeconds(0.3)
                 .turn(Math.toRadians(-49))
                 .waitSeconds(0.2)
@@ -152,7 +152,7 @@ public class AL_AutoBasketStartWithSample48 extends LinearOpMode {
 
         Action Strafe2 = drive.actionBuilder(drive.pose)
                 .turn(Math.toRadians(45))
-                .strafeToConstantHeading(new Vector2d( 7, -7))
+                .strafeToConstantHeading(new Vector2d( 5, -7))
                 .build();
 
         Action GoToPark = drive.actionBuilder(drive.pose)
