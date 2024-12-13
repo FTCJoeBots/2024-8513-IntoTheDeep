@@ -133,7 +133,7 @@ public class AL_AutoBasket43 extends LinearOpMode {
 
         Action Strafe2 = drive.actionBuilder(drive.pose)
                 .turn(Math.toRadians(45))
-                .strafeToConstantHeading(new Vector2d( 9, -7))
+                .strafeToConstantHeading(new Vector2d( 9, -8.5))
                 .build();
 
         Action GoToPark = drive.actionBuilder(drive.pose)
