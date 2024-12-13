@@ -56,9 +56,9 @@ public class AL_AutoHP63WithSplineThreeClips extends LinearOpMode {
 
 Action plow = drive.actionBuilder(drive.pose)
         .splineToConstantHeading(new Vector2d(33, -2),1.6)
-        .splineToSplineHeading(new Pose2d(new Vector2d(30, 30), Math.toRadians(-180)),1.6)
+        .splineToSplineHeading(new Pose2d(new Vector2d(34, 30), Math.toRadians(-180)),1.6)
         //start to push first block into HP
-        .strafeToConstantHeading(new Vector2d(41.5, 25))
+        .strafeToConstantHeading(new Vector2d(43.5, 28))
         .strafeToConstantHeading(new Vector2d(43, -20))
         //Finishing pushng first block into HP and starting second
         .splineToSplineHeading(new Pose2d(new Vector2d(45, -12), Math.toRadians(-190)),1.6)
@@ -81,14 +81,14 @@ Action plow = drive.actionBuilder(drive.pose)
 
 
 Action twoclips = drive.actionBuilder(drive.pose)
-        .splineTo(new Pose2d(new Vector2d(44, -20), Math.toRadians(0)).component1(),1.6)
+        .splineTo(new Pose2d(new Vector2d(40, -20), Math.toRadians(0)).component1(),1.6)
         .stopAndAdd(l.Pos2())
-        .strafeToConstantHeading(new Vector2d(36,-35))
+        .strafeToConstantHeading(new Vector2d(32,-35))
         .stopAndAdd(l.Pos1())
-        .waitSeconds(0.28)
+        .waitSeconds(0.4)
         .stopAndAdd(c.ClawOpen())
         .stopAndAdd(l.Pos0())
-        .splineToSplineHeading(new Pose2d(new Vector2d(-4, 6), Math.toRadians(265)),1.6)
+        .splineToSplineHeading(new Pose2d(new Vector2d(-9, 14), Math.toRadians(265)),1.6)
         .waitSeconds(0.1)
         .stopAndAdd(l.Pos1())
         .waitSeconds(0.025)
@@ -97,7 +97,7 @@ Action twoclips = drive.actionBuilder(drive.pose)
 
 
         Action cliptwice = drive.actionBuilder(drive.pose)
-        .splineTo(new Pose2d(new Vector2d(43, -18), Math.toRadians(0)).component1(),1.6)
+        .splineTo(new Pose2d(new Vector2d(45, -18), Math.toRadians(0)).component1(),1.6)
         .stopAndAdd(l.Pos2())
         .strafeToConstantHeading(new Vector2d(43,-35))
         .stopAndAdd(l.Pos1())
