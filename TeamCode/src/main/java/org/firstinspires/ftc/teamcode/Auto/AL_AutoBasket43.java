@@ -59,7 +59,7 @@ public class AL_AutoBasket43 extends LinearOpMode {
 
 
         Action Strafe = drive.actionBuilder(drive.pose)
-                .strafeToConstantHeading(new Vector2d( -46.8, -8))
+                .strafeToConstantHeading(new Vector2d( -48, -6))
                 .turn(Math.toRadians(-176))
                 .build();
 
